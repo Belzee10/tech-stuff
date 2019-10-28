@@ -19,6 +19,6 @@ module.exports = {
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname'
   ],
-  setupFiles: ['./test-setup.js'],
+  setupFiles: ['./testSetup.js'],
   collectCoverageFrom: ['src/**/*.{js,vue}']
 };
