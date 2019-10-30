@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-    <v-app-bar app color="primary" dark dense tile>
+  <fragment>
+    <v-app-bar class="px-10" app color="primary" dark dense tile>
       <div class="mr-2">
         <v-img src="../../../assets/logo.png" height="30" width="30" contain />
       </div>
@@ -12,6 +12,7 @@
         @click="toggleDraw"
       ></v-app-bar-nav-icon>
     </v-app-bar>
+
     <v-navigation-drawer v-model="showDraw" class="primary" dark right app>
       <v-list-item>
         <v-list-item-content>
@@ -31,7 +32,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-  </v-container>
+  </fragment>
 </template>
 
 <script>
