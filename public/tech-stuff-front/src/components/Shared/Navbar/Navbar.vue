@@ -1,14 +1,16 @@
 <template>
   <div>
     <app-bar />
+    <navigation-draw />
   </div>
 </template>
 
 <script>
 import AppBar from '../AppBar';
+import NavigationDraw from '../NavigationDraw';
 export default {
   name: 'Navbar',
-  components: { AppBar }
+  components: { AppBar, NavigationDraw }
 };
 </script>
 
