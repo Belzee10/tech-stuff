@@ -7,17 +7,18 @@
           <router-view></router-view>
         </v-container>
       </v-content>
+      <Footer />
     </v-app>
-    <v-footer app> </v-footer>
   </fragment>
 </template>
 
 <script>
 import Navbar from '@/components/Shared/Navbar';
+import Footer from '@/components/Shared/Footer';
 
 export default {
   name: 'App',
-  components: { Navbar },
+  components: { Navbar, Footer },
   data: () => ({
     //
   })

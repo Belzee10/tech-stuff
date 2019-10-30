@@ -1,5 +1,5 @@
 <template>
-  <fragment>
+  <v-container>
     <v-app-bar app color="primary" dark dense tile>
       <div class="mr-2">
         <v-img src="../../../assets/logo.png" height="30" width="30" contain />
@@ -31,7 +31,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-  </fragment>
+  </v-container>
 </template>
 
 <script>
