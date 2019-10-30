@@ -1,7 +1,7 @@
 <template>
   <fragment>
     <v-app>
-      <navbar />
+      <navbar app-title="TechStuff" />
       <v-content>
         <v-container>
           <router-view></router-view>
