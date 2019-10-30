@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar>
+  <v-app-bar app color="primary" dark>
     <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
     <v-toolbar-title>Page title</v-toolbar-title>

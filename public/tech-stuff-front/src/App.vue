@@ -1,6 +1,7 @@
 <template>
   <fragment>
     <v-app>
+      <navbar />
       <v-content>
         <v-container>
           <router-view></router-view>
@@ -12,9 +13,11 @@
 </template>
 
 <script>
+import Navbar from '@/components/Shared/Navbar';
+
 export default {
   name: 'App',
-  components: {},
+  components: { Navbar },
   data: () => ({
     //
   })

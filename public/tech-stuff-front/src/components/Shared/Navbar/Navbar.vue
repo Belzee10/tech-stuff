@@ -1,12 +1,14 @@
 <template>
   <div>
-    navbar
+    <app-bar />
   </div>
 </template>
 
 <script>
+import AppBar from '../AppBar';
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  components: { AppBar }
 };
 </script>
 
