@@ -2,7 +2,7 @@ import axios from 'axios';
 import { apiBaseUrl } from '../environment';
 
 const config = {
-  baseUrl: apiBaseUrl
+  baseURL: apiBaseUrl
 };
 
 const httpClient = axios.create(config);

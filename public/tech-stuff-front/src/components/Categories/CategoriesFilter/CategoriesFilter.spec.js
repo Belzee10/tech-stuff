@@ -3,7 +3,7 @@ import CategoriesFilter from './CategoriesFilter.vue';
 
 describe('CategoriesFilter.vue', () => {
   const props = {
-    categories: ['']
+    categories: [{}]
   };
   test('should render all "categories"', () => {
     const wrapper = createWrapper(CategoriesFilter, {
@@ -11,5 +11,12 @@ describe('CategoriesFilter.vue', () => {
     });
     const categories = wrapper.findAll('.v-input');
     expect(categories).toHaveLength(1);
+  });
+
+  test('should render correctly', () => {
+    const wrapper = createWrapper(CategoriesFilter, {
+      propsData: props
+    });
+    expect(wrapper.element).toMatchSnapshot();
   });
 });

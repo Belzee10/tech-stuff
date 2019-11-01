@@ -7,7 +7,7 @@ import * as logger from 'loglevel';
 export const getCategories = async () => {
   try {
     const res = await httpClient.get('/categories/all');
-    return res.data;
+    return res.data.data;
   } catch (error) {
     logger.error(`CATEGORIES_ALL: **${error}**`);
     return error;

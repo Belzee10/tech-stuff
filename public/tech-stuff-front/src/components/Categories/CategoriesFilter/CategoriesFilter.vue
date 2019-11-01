@@ -1,9 +1,14 @@
 <template>
-  <div class="categories-filter">
+  <div class="categories-filter pa-3">
+    <h3 class="headline">Categories</h3>
+    <v-divider class="pb-5"></v-divider>
     <v-checkbox
       v-for="item in categories"
       :key="item.id"
       v-model="value"
+      dense
+      class="ma-0 pa-0"
+      color="primary"
       :label="item.name"
     ></v-checkbox>
   </div>
@@ -25,4 +30,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.categories-filter {
+  background-color: #ccc;
+}
+.v-input .v-messages {
+  min-height: 0px !important;
+}
+</style>
