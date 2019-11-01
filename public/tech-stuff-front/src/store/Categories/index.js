@@ -4,7 +4,7 @@ import mutations from './mutations.js';
 
 const state = {
   categories: [],
-  error: ''
+  errorCategories: ''
 };
 
 export default {

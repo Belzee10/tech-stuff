@@ -1,7 +1,18 @@
 <template>
   <v-row>
     <v-col cols="3">
-      <categories-filter :categories="categories" />
+      <h3 class="headline">Categories</h3>
+      <v-divider class="pb-5"></v-divider>
+      <v-alert
+        v-if="errorCategories"
+        text
+        prominent
+        icon="mdi-cloud-alert"
+        type="error"
+      >
+        We couldn't load the Categories :(
+      </v-alert>
+      <categories-filter v-else :categories="categories" />
     </v-col>
     <v-col cols="9"></v-col>
   </v-row>
@@ -16,7 +27,7 @@ export default {
   components: { CategoriesFilter },
   data: () => ({}),
   computed: {
-    ...mapGetters(['categories', 'error'])
+    ...mapGetters(['categories', 'errorCategories'])
   },
   mounted() {
     this.fetchCategories();

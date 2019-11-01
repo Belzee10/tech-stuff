@@ -1,6 +1,6 @@
 const getters = {
   categories: state => state.categories,
-  error: state => state.error
+  errorCategories: state => state.errorCategories
 };
 
 export default getters;

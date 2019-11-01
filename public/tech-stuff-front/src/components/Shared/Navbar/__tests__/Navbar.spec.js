@@ -1,5 +1,5 @@
 // import { createWrapper } from '@/test-utils/factories';
-// import Navbar from './Navbar.vue';
+// import Navbar from '../Navbar.vue';
 
 //TODO add tests
 

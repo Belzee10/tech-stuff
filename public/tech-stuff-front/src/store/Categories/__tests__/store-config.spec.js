@@ -24,11 +24,11 @@ describe('Categories Store', () => {
 
   test(`should dispatch a failed "fetchCategories" action and update the store`, async () => {
     const error = 'error';
-    mockAxios.get.mockRejectedValueOnce(error);
+    mockAxios.get.mockRejectedValueOnce({ message: error });
     const newStore = { ...storeConfig };
     const store = new Vuex.Store(newStore);
     store.dispatch('fetchCategories');
     await flushPromises();
-    expect(store.state.error).toEqual(error);
+    expect(store.state.errorCategories).toEqual(error);
   });
 });

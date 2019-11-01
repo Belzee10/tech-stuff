@@ -1,7 +1,5 @@
 <template>
   <div class="categories-filter pa-3">
-    <h3 class="headline">Categories</h3>
-    <v-divider class="pb-5"></v-divider>
     <v-checkbox
       v-for="item in categories"
       :key="item.id"

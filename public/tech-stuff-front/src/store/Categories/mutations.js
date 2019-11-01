@@ -5,7 +5,7 @@ const mutations = {
     state.categories = payload.categories;
   },
   [SET_ERROR]: (state, payload) => {
-    state.error = payload.error;
+    state.errorCategories = payload.error;
   }
 };
 
