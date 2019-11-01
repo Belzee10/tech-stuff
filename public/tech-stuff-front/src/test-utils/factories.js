@@ -5,6 +5,7 @@ import Vuex from 'vuex';
 import mockAxios from 'jest-mock-axios';
 
 const localVue = createLocalVue();
+localVue.use(Vuex);
 
 let vuetify;
 
@@ -25,6 +26,11 @@ const customizer = (_, srcValue) => {
   }
 };
 
+/**
+ * create component wrapper
+ * @param {*} Component
+ * @param {Object} overrides
+ */
 const createWrapper = (Component, overrides) => {
   const defaultMountingOptions = {
     localVue,
@@ -36,7 +42,10 @@ const createWrapper = (Component, overrides) => {
   );
 };
 
-// TODO implement and use this factory func
+/**
+ * create Vuex store
+ * @param {Object} overrides
+ */
 const createStore = overrides => {
   const defaultStoreConfig = {};
   return new Vuex.Store(mergeWith(defaultStoreConfig, overrides, customizer));
