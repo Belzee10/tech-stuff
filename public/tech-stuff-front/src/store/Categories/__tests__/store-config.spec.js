@@ -22,15 +22,13 @@ describe('Categories Store', () => {
     expect(store.state.categories).toEqual(items);
   });
 
-  // TODO double check if this happend
-  //   test(`should dispatch a failed "${FETCH_CATEGORIES}" action`, async () => {
-  //     expect.assertions(1);
-  //     const error = 'error';
-  //     mockAxios.get.mockRejectedValueOnce({ error: 'as' });
-  //     const newStore = { ...storeConfig };
-  //     const store = new Vuex.Store(newStore);
-  //     store.dispatch(FETCH_CATEGORIES);
-  //     await flushPromises();
-  //     expect(store.state.error).toEqual('as');
-  //   });
+  test(`should dispatch a failed "fetchCategories" action and update the store`, async () => {
+    const error = 'error';
+    mockAxios.get.mockRejectedValueOnce(error);
+    const newStore = { ...storeConfig };
+    const store = new Vuex.Store(newStore);
+    store.dispatch('fetchCategories');
+    await flushPromises();
+    expect(store.state.error).toEqual(error);
+  });
 });

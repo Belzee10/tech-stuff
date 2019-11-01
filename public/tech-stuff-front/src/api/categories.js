@@ -10,6 +10,6 @@ export const getCategories = async () => {
     return res.data.data;
   } catch (error) {
     logger.error(`CATEGORIES_ALL: **${error}**`);
-    return error;
+    throw error;
   }
 };
