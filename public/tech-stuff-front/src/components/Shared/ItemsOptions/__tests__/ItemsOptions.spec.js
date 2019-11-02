@@ -30,4 +30,15 @@ describe('ItemsOptions.vue', () => {
     wrapper.find('.v-text-field input').setValue(value);
     expect(wrapper.emitted('search')[0]).toEqual([value]);
   });
+
+  test('should render correctly', () => {
+    const props = {
+      sortValue: 'ASC',
+      viewValue: 'cards'
+    };
+    const wrapper = createWrapper(ItemsOptions, {
+      propsData: props
+    });
+    expect(wrapper.element).toMatchSnapshot();
+  });
 });

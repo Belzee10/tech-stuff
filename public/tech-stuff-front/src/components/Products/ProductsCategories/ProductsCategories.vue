@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col cols="3">
-      <h3 class="headline pb-2">Categories</h3>
+      <h3 class="headline pb-2 mt-5">Categories</h3>
       <v-divider class="pb-5"></v-divider>
       <v-alert
         v-if="errorCategories"

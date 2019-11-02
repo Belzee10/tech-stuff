@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemsOptions.vue should render correctly 1`] = `
+<div
+  class="row"
+>
+  <div
+    class="col col-8"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="col col-6"
+      >
+        <div
+          class="v-input v-input--dense theme--light v-text-field"
+        >
+          <div
+            class="v-input__prepend-outer"
+          >
+            <i
+              aria-hidden="true"
+              class="v-icon notranslate mdi mdi-magnify theme--light"
+            />
+          </div>
+          <div
+            class="v-input__control"
+          >
+            <div
+              class="v-input__slot"
+            >
+              <div
+                class="v-text-field__slot"
+              >
+                <label
+                  class="v-label theme--light"
+                  for="input-58"
+                  style="left: 0px; position: absolute;"
+                >
+                  Search
+                </label>
+                <input
+                  id="input-58"
+                  type="text"
+                />
+              </div>
+              <div
+                class="v-input__append-inner"
+              >
+                <div
+                  class="v-input__icon v-input__icon--"
+                >
+                  <i
+                    class="v-icon notranslate v-icon--link material-icons theme--light"
+                    role="button"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="v-text-field__details"
+            >
+              <div
+                class="v-messages theme--light"
+              >
+                <span
+                  class="v-messages__wrapper"
+                  name="message-transition"
+                  tag="div"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="col col-4"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="col col-6"
+      >
+        <div
+          class="v-input v-input--hide-details v-input--is-label-active v-input--is-dirty v-input--dense theme--light v-text-field v-text-field--solo-flat v-text-field--enclosed v-text-field--outlined v-select"
+        >
+          <div
+            class="v-input__control"
+          >
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-owns="list-63"
+              class="v-input__slot"
+              role="button"
+            >
+              <fieldset
+                aria-hidden="true"
+              >
+                <legend
+                  style="width: 6px;"
+                >
+                  <span>
+                    ​
+                  </span>
+                </legend>
+              </fieldset>
+              <div
+                class="v-select__slot"
+              >
+                <label
+                  class="v-label v-label--active theme--light"
+                  for="input-63"
+                  style="left: 0px; position: absolute;"
+                >
+                  Sort
+                </label>
+                <div
+                  class="v-select__selections"
+                >
+                  <div
+                    class="v-select__selection v-select__selection--comma"
+                  >
+                    Asc
+                  </div>
+                  <input
+                    aria-readonly="true"
+                    id="input-63"
+                    readonly="readonly"
+                    type="text"
+                  />
+                </div>
+                <div
+                  class="v-input__append-inner"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="v-icon notranslate mdi mdi-sort-ascending theme--light"
+                    style="font-size: 16px;"
+                  />
+                </div>
+              </div>
+              <div
+                class="v-menu"
+              >
+                <div
+                  class="v-menu__content theme--light "
+                  style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="col col-6"
+      >
+        <div
+          class="v-item-group theme--light v-btn-toggle primary--text"
+        >
+          <button
+            class="cards v-btn v-item--active v-btn--active v-btn--contained theme--light v-size--default"
+            title="Grid view"
+            type="button"
+            value="cards"
+          >
+            <span
+              class="v-btn__content"
+            >
+              <i
+                aria-hidden="true"
+                class="v-icon notranslate mdi mdi-view-grid theme--light"
+                style="font-size: 16px;"
+              />
+            </span>
+          </button>
+           
+          <button
+            class="items v-btn v-btn--contained theme--light v-size--default"
+            title="Items view"
+            type="button"
+            value="items"
+          >
+            <span
+              class="v-btn__content"
+            >
+              <i
+                aria-hidden="true"
+                class="v-icon notranslate mdi mdi-format-list-bulleted-square theme--light"
+                style="font-size: 16px;"
+              />
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
