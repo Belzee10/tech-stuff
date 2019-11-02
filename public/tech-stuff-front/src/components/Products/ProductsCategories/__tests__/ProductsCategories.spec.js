@@ -33,4 +33,8 @@ describe('ProductsCategories.vue', () => {
     const alert = wrapper.find('.v-alert.error--text');
     expect(alert.exists()).toBeTruthy();
   });
+
+  // test('should render all "products"', () => {
+
+  // });
 });

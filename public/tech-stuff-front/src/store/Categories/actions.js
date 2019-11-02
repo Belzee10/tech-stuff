@@ -1,4 +1,4 @@
-import { SET_CATEGORIES, SET_ERROR } from './mutation-types.js';
+import { SET_CATEGORIES, SET_CATEGORIES_ERROR } from './mutation-types.js';
 import { getCategories } from '@/api/categories.js';
 
 const actions = {
@@ -12,7 +12,7 @@ const actions = {
       return categories;
     } catch (error) {
       commit({
-        type: SET_ERROR,
+        type: SET_CATEGORIES_ERROR,
         error
       });
     }
