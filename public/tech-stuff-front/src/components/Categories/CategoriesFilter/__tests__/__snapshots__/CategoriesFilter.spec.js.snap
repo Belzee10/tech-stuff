@@ -5,7 +5,7 @@ exports[`CategoriesFilter.vue should render correctly 1`] = `
   class="categories-filter pa-3"
 >
   <div
-    class="v-input ma-0 pa-0 v-input--dense theme--light v-input--selection-controls v-input--checkbox"
+    class="v-input ma-0 pa-0 category-check v-input--dense theme--light v-input--selection-controls v-input--checkbox"
   >
     <div
       class="v-input__control"
@@ -44,7 +44,7 @@ exports[`CategoriesFilter.vue should render correctly 1`] = `
     </div>
   </div>
   <div
-    class="v-input ma-0 pa-0 v-input--dense theme--light v-input--selection-controls v-input--checkbox"
+    class="v-input ma-0 pa-0 category-check v-input--dense theme--light v-input--selection-controls v-input--checkbox"
   >
     <div
       class="v-input__control"

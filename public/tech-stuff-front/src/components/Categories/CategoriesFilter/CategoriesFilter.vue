@@ -5,7 +5,7 @@
       :key="item.id"
       v-model="value"
       dense
-      class="ma-0 pa-0"
+      class="ma-0 pa-0 category-check"
       color="primary"
       :label="item.name"
     ></v-checkbox>
@@ -29,9 +29,6 @@ export default {
 </script>
 
 <style lang="scss">
-.categories-filter {
-  background-color: #ccc;
-}
 .v-input .v-messages {
   min-height: 0px !important;
 }

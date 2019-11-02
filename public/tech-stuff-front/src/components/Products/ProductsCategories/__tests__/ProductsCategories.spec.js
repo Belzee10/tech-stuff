@@ -16,7 +16,7 @@ describe('ProductsCategories.vue', () => {
     const wrapper = createWrapper(ProductsCategories, {
       store
     });
-    const categories = wrapper.findAll('.v-input');
+    const categories = wrapper.findAll('.category-check.v-input');
     expect(categories).toHaveLength(items.length);
   });
 
