@@ -13,3 +13,17 @@ export const getProducts = async () => {
     throw error.message;
   }
 };
+
+/**
+ * get products by category
+ * @param {Number} categoryId
+ */
+export const getProductsByCategory = async categoryId => {
+  try {
+    const res = await httpClient.get(`/products/product-by/${categoryId}`);
+    return res.data;
+  } catch (error) {
+    logger.error(`PRODUCTS_BY_CATEGORY: **${error}**`);
+    throw error.message;
+  }
+};

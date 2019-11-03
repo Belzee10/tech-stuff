@@ -11,6 +11,7 @@
           v-else
           :categories="getCategories"
           :value="category"
+          @check="handleCheck"
         />
       </v-col>
       <v-col cols="10">
@@ -59,8 +60,8 @@ export default {
       if (this.categories) {
         return [
           {
-            name: 'All',
-            value: 'ALL'
+            id: 'ALL',
+            name: 'All'
           },
           ...this.categories
         ];
@@ -72,7 +73,16 @@ export default {
     this.fetchProducts();
   },
   methods: {
-    ...mapActions(['fetchCategories', 'fetchProducts'])
+    ...mapActions([
+      'fetchCategories',
+      'fetchProducts',
+      'fetchProductsByCategory'
+    ]),
+    handleCheck(value) {
+      this.category = value;
+      if (this.category === 'ALL') this.fetchProducts();
+      else this.fetchProductsByCategory(this.category);
+    }
   }
 };
 </script>

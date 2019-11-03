@@ -11,6 +11,10 @@ localVue.use(Vuex);
 const url = `/categories`;
 
 describe('Categories Store', () => {
+  afterEach(() => {
+    mockAxios.reset();
+  });
+
   test(`should dispatch a "fetchCategories" action and update the store`, async () => {
     const items = generateArray(2);
     mockAxios.get.mockResolvedValueOnce({ data: { data: items } });

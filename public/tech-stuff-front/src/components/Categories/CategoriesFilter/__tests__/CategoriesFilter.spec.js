@@ -21,43 +21,23 @@ describe('CategoriesFilter.vue', () => {
     const props = {
       categories: generateArray(2, i => ({
         id: i,
-        name: `Cat ${i}`,
-        value: `Cat ${i}`
+        name: `Cat ${i}`
       }))
     };
     const wrapper = createWrapper(CategoriesFilter, {
       propsData: {
         ...props,
-        value: 'Cat 1'
+        value: 1
       }
     });
     const firstCategory = wrapper.find('.v-radio:last-child input');
-    expect(firstCategory.attributes('value')).toBe('Cat 1');
-  });
-
-  test('should emit a "check" event', () => {
-    const props = {
-      categories: generateArray(2, i => ({
-        id: i,
-        name: `Cat ${i}`,
-        value: `Cat ${i}`
-      }))
-    };
-    const wrapper = createWrapper(CategoriesFilter, {
-      propsData: {
-        ...props,
-        value: 'Cat 1'
-      }
-    });
-    wrapper.find('.v-radio input:first-child').setChecked(true);
-    expect(wrapper.emitted('check')[0]).toEqual([props.categories[0].value]);
+    expect(firstCategory.attributes('value')).toBe('1');
   });
 
   test('should render correctly', () => {
     const props = {
       categories: generateArray(1, {
-        name: '',
-        value: ''
+        name: ''
       })
     };
     const wrapper = createWrapper(CategoriesFilter, {

@@ -7,7 +7,7 @@
         color="primary"
         class="mb-2 category-check"
         :label="item.name"
-        :value="item.value"
+        :value="item.id"
       ></v-radio>
     </v-radio-group>
   </div>
@@ -22,8 +22,8 @@ export default {
       default: () => []
     },
     value: {
-      type: String,
-      default: ''
+      type: [Number, String],
+      default: 0
     }
   }
 };

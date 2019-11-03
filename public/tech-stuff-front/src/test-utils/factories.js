@@ -2,7 +2,6 @@ import { mount, createLocalVue } from '@vue/test-utils';
 import mergeWith from 'lodash.mergewith';
 import Vuetify from 'vuetify';
 import Vuex from 'vuex';
-import mockAxios from 'jest-mock-axios';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
@@ -11,10 +10,6 @@ let vuetify;
 
 beforeEach(() => {
   vuetify = new Vuetify();
-});
-
-afterEach(() => {
-  mockAxios.reset();
 });
 
 const customizer = (_, srcValue) => {

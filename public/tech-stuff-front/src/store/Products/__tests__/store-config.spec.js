@@ -11,6 +11,10 @@ localVue.use(Vuex);
 const url = `/products`;
 
 describe('Products store', () => {
+  afterEach(() => {
+    mockAxios.reset();
+  });
+
   test(`should dispatch a "fetchProducts" action and update the store`, async () => {
     const items = generateArray(2);
     mockAxios.get.mockResolvedValueOnce({ data: items });
@@ -28,6 +32,30 @@ describe('Products store', () => {
     const newStore = { ...storeConfig };
     const store = new Vuex.Store(newStore);
     store.dispatch('fetchProducts');
+    await flushPromises();
+    expect(store.state.errorProducts).toEqual(error);
+  });
+
+  test('should dispatch a "fetchProductsByCategory" action and update the store', async () => {
+    const items = generateArray(2);
+    const categoryId = 1;
+    mockAxios.get.mockResolvedValueOnce({ data: items });
+    const newStore = { ...storeConfig };
+    const store = new Vuex.Store(newStore);
+    store.dispatch('fetchProductsByCategory', categoryId);
+    expect(mockAxios.get).toHaveBeenCalledWith(
+      `${url}/product-by/${categoryId}`
+    );
+    await flushPromises();
+    expect(store.state.products).toEqual(items);
+  });
+
+  test(`should dispatch a failed "fetchProductsByCategory" action and update the store`, async () => {
+    const error = 'error';
+    mockAxios.get.mockRejectedValueOnce({ message: error });
+    const newStore = { ...storeConfig };
+    const store = new Vuex.Store(newStore);
+    store.dispatch('fetchProductsByCategory');
     await flushPromises();
     expect(store.state.errorProducts).toEqual(error);
   });
