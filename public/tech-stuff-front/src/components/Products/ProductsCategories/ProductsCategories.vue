@@ -13,7 +13,7 @@
         >
           We couldn't load the Categories :(
         </v-alert>
-        <categories-filter v-else :categories="categories" />
+        <categories-filter v-else :categories="getCategories" />
       </v-col>
       <v-col cols="10">
         <v-row>
@@ -40,9 +40,22 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'ProductsCategories',
   components: { CategoriesFilter, ItemsOptions, ProductCard },
-  data: () => ({}),
+  data: () => ({
+    category: 'ALL'
+  }),
   computed: {
-    ...mapGetters(['categories', 'errorCategories', 'products'])
+    ...mapGetters(['categories', 'errorCategories', 'products']),
+    getCategories() {
+      if (this.categories) {
+        return [
+          {
+            name: 'All',
+            value: 'ALL'
+          },
+          ...this.categories
+        ];
+      } else return this.categories;
+    }
   },
   mounted() {
     this.fetchCategories();

@@ -8,6 +8,10 @@ describe('ProductsCategories.vue', () => {
       name: '',
       value: ''
     });
+    const allCategory = {
+      name: 'All',
+      value: 'ALL'
+    };
     const store = createStore({
       getters: {
         categories: () => items
@@ -17,7 +21,9 @@ describe('ProductsCategories.vue', () => {
       store
     });
     const categories = wrapper.findAll('.category-check.v-input');
-    expect(categories).toHaveLength(items.length);
+    const firstCategory = wrapper.find('.category-check.v-input:first-child');
+    expect(categories).toHaveLength(items.length + 1);
+    expect(firstCategory.text()).toBe(allCategory.name);
   });
 
   test('should render an Alert if there is an error', () => {
