@@ -13,7 +13,7 @@ const url = `/products`;
 describe('Products store', () => {
   test(`should dispatch a "fetchProducts" action and update the store`, async () => {
     const items = generateArray(2);
-    mockAxios.get.mockResolvedValueOnce({ data: { data: items } });
+    mockAxios.get.mockResolvedValueOnce({ data: items });
     const newStore = { ...storeConfig };
     const store = new Vuex.Store(newStore);
     store.dispatch('fetchProducts');

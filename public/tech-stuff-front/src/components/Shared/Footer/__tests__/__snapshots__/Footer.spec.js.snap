@@ -2,8 +2,8 @@
 
 exports[`Footer.vue should render correctly 1`] = `
 <footer
-  class="v-footer v-sheet v-sheet--tile theme--dark v-footer--fixed dark"
-  style="height: 40px; left: 0px; right: 0px; bottom: 0px;"
+  class="v-footer v-sheet v-sheet--tile theme--dark dark"
+  style="height: 40px;"
 >
   <div
     class="d-flex justify-center"

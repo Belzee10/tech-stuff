@@ -1,5 +1,5 @@
 <template>
-  <v-footer app height="40" dark color="dark">
+  <v-footer height="40" dark color="dark">
     <div class="d-flex justify-center" style="width: 100%">
       Tech Stuff
     </div>

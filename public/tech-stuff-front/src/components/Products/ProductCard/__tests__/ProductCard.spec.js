@@ -4,7 +4,7 @@ import ProductCard from '../ProductCard.vue';
 describe('ProductCard.vue', () => {
   test('should emit a "add-to-cart" event', () => {
     const props = {
-      id: '1'
+      id: 1
     };
     const wrapper = createWrapper(ProductCard, {
       propsData: props
@@ -14,7 +14,7 @@ describe('ProductCard.vue', () => {
   });
   test('should render two "btn-small", emit "add-to-cart" and "remove-from-cart" events', () => {
     const props = {
-      id: '1',
+      id: 1,
       inStock: 2
     };
     const wrapper = createWrapper(ProductCard, {
@@ -26,5 +26,10 @@ describe('ProductCard.vue', () => {
     expect(wrapper.emitted('remove-from-cart')[0]).toEqual([props.id]);
     wrapper.find('.btn-small:last-child').trigger('click');
     expect(wrapper.emitted('add-to-cart')[0]).toEqual([props.id]);
+  });
+
+  test('should render correctly', () => {
+    const wrapper = createWrapper(ProductCard);
+    expect(wrapper.element).toMatchSnapshot();
   });
 });

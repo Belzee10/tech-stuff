@@ -1,22 +1,26 @@
 <template>
-  <v-card class="mx-auto" max-width="400">
+  <v-card class=" product-card">
     <v-img
       class="white--text align-end"
-      height="200px"
-      src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+      height="150px"
+      :src="image"
+      lazy-src="https://picsum.photos/id/11/10/6"
     >
-      <v-card-title>Top 10 Australian beaches</v-card-title>
+      <v-card-title>{{ name }}</v-card-title>
     </v-img>
 
     <v-card-subtitle class="pb-0">{{ brand }}</v-card-subtitle>
 
     <v-card-text class="text--primary">
-      <div>{{ price }}</div>
+      <span class="font-weight-bold">${{ price }}</span>
     </v-card-text>
 
     <v-card-actions>
       <div v-if="inStock > 0">
         <v-btn
+          small
+          block
+          depressed
           class="btn-small"
           color="secondary"
           @click="$emit('remove-from-cart', id)"
@@ -24,6 +28,9 @@
           -
         </v-btn>
         <v-btn
+          small
+          block
+          depressed
           class="btn-small"
           color="secondary"
           @click="$emit('add-to-cart', id)"
@@ -33,10 +40,14 @@
       </div>
       <v-btn
         v-else
-        class="btn-full"
+        small
+        block
+        depressed
+        class="btn-full text-capitalize"
         color="secondary"
         @click="$emit('add-to-cart', id)"
       >
+        <v-icon small class="mr-1">mdi-cart-plus</v-icon>
         Add to Cart
       </v-btn>
     </v-card-actions>
@@ -48,8 +59,8 @@ export default {
   name: 'ProductCard',
   props: {
     id: {
-      type: String,
-      default: ''
+      type: Number,
+      default: null
     },
     name: {
       type: String,

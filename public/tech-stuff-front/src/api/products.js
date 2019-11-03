@@ -7,7 +7,7 @@ import * as logger from 'loglevel';
 export const getProducts = async () => {
   try {
     const res = await httpClient.get('/products/all');
-    return res.data.data;
+    return res.data;
   } catch (error) {
     logger.error(`PRODUCTS_ALL: **${error}**`);
     throw error.message;

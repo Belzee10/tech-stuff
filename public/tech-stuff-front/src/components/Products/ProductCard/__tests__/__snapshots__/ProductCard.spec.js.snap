@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductCard.vue should render correctly 1`] = `
+<div
+  class=" product-card v-card v-sheet theme--light"
+>
+  <div
+    class="v-responsive v-image white--text align-end"
+    style="height: 150px;"
+  >
+    <div
+      class="v-image__image v-image__image--preload v-image__image--cover"
+      mode="in-out"
+      name="fade-transition"
+      style="background-image: url(https://picsum.photos/id/11/10/6); background-position: center center;"
+    />
+    <div
+      class="v-responsive__content"
+    >
+      <div
+        class="v-card__title"
+      >
+        
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="v-card__subtitle pb-0"
+  >
+    
+  </div>
+   
+  <div
+    class="v-card__text text--primary"
+  >
+    <span
+      class="font-weight-bold"
+    >
+      $
+    </span>
+  </div>
+   
+  <div
+    class="v-card__actions"
+  >
+    <button
+      class="btn-full text-capitalize v-btn v-btn--block v-btn--depressed theme--light v-size--small secondary"
+      type="button"
+    >
+      <span
+        class="v-btn__content"
+      >
+        <i
+          aria-hidden="true"
+          class="v-icon notranslate mr-1 mdi mdi-cart-plus theme--light"
+          style="font-size: 16px;"
+        />
+        
+      Add to Cart
+    
+      </span>
+    </button>
+  </div>
+</div>
+`;

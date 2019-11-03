@@ -1,45 +1,55 @@
 <template>
-  <v-row>
-    <v-col cols="3">
-      <h3 class="headline pb-2 mt-5">Categories</h3>
-      <v-divider class="pb-5"></v-divider>
-      <v-alert
-        v-if="errorCategories"
-        text
-        prominent
-        icon="mdi-cloud-alert"
-        type="error"
-      >
-        We couldn't load the Categories :(
-      </v-alert>
-      <categories-filter v-else :categories="categories" />
-    </v-col>
-    <v-col cols="9">
-      <items-options />
-    </v-col>
-  </v-row>
+  <fragment>
+    <v-row>
+      <v-col cols="2">
+        <h3 class="headline pb-2 mt-8">Categories</h3>
+        <v-divider class="pb-5"></v-divider>
+        <v-alert
+          v-if="errorCategories"
+          text
+          prominent
+          icon="mdi-cloud-alert"
+          type="error"
+        >
+          We couldn't load the Categories :(
+        </v-alert>
+        <categories-filter v-else :categories="categories" />
+      </v-col>
+      <v-col cols="10">
+        <v-row>
+          <v-col>
+            <items-options />
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col v-for="product in products" :key="product.id" cols="3">
+            <product-card v-bind="product" />
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+  </fragment>
 </template>
 
 <script>
 import CategoriesFilter from '@/components/Categories/CategoriesFilter';
 import ItemsOptions from '@/components/Shared/ItemsOptions';
+import ProductCard from '@/components/Products/ProductCard';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'ProductsCategories',
-  components: { CategoriesFilter, ItemsOptions },
+  components: { CategoriesFilter, ItemsOptions, ProductCard },
   data: () => ({}),
   computed: {
-    ...mapGetters(['categories', 'errorCategories'])
+    ...mapGetters(['categories', 'errorCategories', 'products'])
   },
   mounted() {
     this.fetchCategories();
+    this.fetchProducts();
   },
   methods: {
-    ...mapActions(['fetchCategories'])
-    // handleSearch(v) {
-    //   console.log(v);
-    // }
+    ...mapActions(['fetchCategories', 'fetchProducts'])
   }
 };
 </script>

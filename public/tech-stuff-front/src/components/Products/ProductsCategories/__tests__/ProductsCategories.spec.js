@@ -34,7 +34,20 @@ describe('ProductsCategories.vue', () => {
     expect(alert.exists()).toBeTruthy();
   });
 
-  // test('should render all "products"', () => {
-
-  // });
+  test('should render all "products"', () => {
+    const items = generateArray(2, {
+      name: '',
+      value: ''
+    });
+    const store = createStore({
+      getters: {
+        products: () => items
+      }
+    });
+    const wrapper = createWrapper(ProductsCategories, {
+      store
+    });
+    const products = wrapper.findAll('.product-card');
+    expect(products).toHaveLength(items.length);
+  });
 });
