@@ -5,8 +5,12 @@
  */
 export const generateArray = (count, item = {}) => {
   const array = new Array(count);
-  return array.fill().map((_, index) => ({
-    ...item,
-    id: index
-  }));
+  return array.fill().map((_, index) => {
+    return typeof item === 'function'
+      ? item(index)
+      : {
+          ...item,
+          id: index
+        };
+  });
 };

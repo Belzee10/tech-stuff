@@ -18,4 +18,20 @@ describe('helpers.js', () => {
       }
     ]);
   });
+
+  test('should generate an array with the length and function provided', () => {
+    const func = i => {
+      return {
+        id: i,
+        name: `name ${i}`
+      };
+    };
+    expect(generateArray(1, func)).toHaveLength(1);
+    expect(generateArray(1, func)).toEqual([
+      {
+        id: 0,
+        name: `name 0`
+      }
+    ]);
+  });
 });

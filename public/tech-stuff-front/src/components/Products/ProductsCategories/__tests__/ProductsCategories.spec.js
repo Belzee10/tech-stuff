@@ -20,9 +20,9 @@ describe('ProductsCategories.vue', () => {
     const wrapper = createWrapper(ProductsCategories, {
       store
     });
-    const categories = wrapper.findAll('.category-check.v-input');
-    const firstCategory = wrapper.find('.category-check.v-input:first-child');
+    const categories = wrapper.findAll('.category-check');
     expect(categories).toHaveLength(items.length + 1);
+    const firstCategory = wrapper.find('.category-check:first-child');
     expect(firstCategory.text()).toBe(allCategory.name);
   });
 

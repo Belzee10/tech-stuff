@@ -1,14 +1,15 @@
 <template>
   <div class="categories-filter pa-3">
-    <v-checkbox
-      v-for="item in categories"
-      :key="item.id"
-      v-model="value"
-      dense
-      class="ma-0 pa-0 category-check"
-      color="primary"
-      :label="item.name"
-    ></v-checkbox>
+    <v-radio-group :value="value" @change="value => $emit('check', value)">
+      <v-radio
+        v-for="item in categories"
+        :key="item.id"
+        color="primary"
+        class="mb-2 category-check"
+        :label="item.name"
+        :value="item.value"
+      ></v-radio>
+    </v-radio-group>
   </div>
 </template>
 
@@ -21,15 +22,11 @@ export default {
       default: () => []
     },
     value: {
-      type: Boolean,
-      default: false
+      type: String,
+      default: ''
     }
   }
 };
 </script>
 
-<style lang="scss">
-.v-input .v-messages {
-  min-height: 0px !important;
-}
-</style>
+<style lang="scss"></style>

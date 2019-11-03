@@ -13,7 +13,11 @@
         >
           We couldn't load the Categories :(
         </v-alert>
-        <categories-filter v-else :categories="getCategories" />
+        <categories-filter
+          v-else
+          :categories="getCategories"
+          :value="category"
+        />
       </v-col>
       <v-col cols="10">
         <v-row>
