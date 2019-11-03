@@ -26,7 +26,7 @@ describe('ProductsCategories.vue', () => {
     expect(firstCategory.text()).toBe(allCategory.name);
   });
 
-  test('should render an Alert if there is an error', () => {
+  test('should render an Alert if there is an error loading the Categories', () => {
     const error = 'error';
     const store = createStore({
       getters: {
@@ -55,5 +55,19 @@ describe('ProductsCategories.vue', () => {
     });
     const products = wrapper.findAll('.product-card');
     expect(products).toHaveLength(items.length);
+  });
+
+  test('should render an Alert if there is an error loading the Products', () => {
+    const error = 'error';
+    const store = createStore({
+      getters: {
+        errorProducts: () => error
+      }
+    });
+    const wrapper = createWrapper(ProductsCategories, {
+      store
+    });
+    const alert = wrapper.find('.v-alert.error--text');
+    expect(alert.exists()).toBeTruthy();
   });
 });

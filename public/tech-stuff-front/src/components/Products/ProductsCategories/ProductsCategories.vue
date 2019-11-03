@@ -4,13 +4,7 @@
       <v-col cols="2">
         <h3 class="headline pb-2 mt-8">Categories</h3>
         <v-divider class="pb-5"></v-divider>
-        <v-alert
-          v-if="errorCategories"
-          text
-          prominent
-          icon="mdi-cloud-alert"
-          type="error"
-        >
+        <v-alert v-if="errorCategories" dense :icon="false" text type="error">
           We couldn't load the Categories :(
         </v-alert>
         <categories-filter
@@ -25,7 +19,14 @@
             <items-options />
           </v-col>
         </v-row>
-        <v-row>
+        <v-row v-if="errorProducts">
+          <v-col cols="6" offset="3">
+            <v-alert dense text prominent icon="mdi-cloud-alert" type="error">
+              We couldn't load the Products :(
+            </v-alert>
+          </v-col>
+        </v-row>
+        <v-row v-else>
           <v-col v-for="product in products" :key="product.id" cols="3">
             <product-card v-bind="product" />
           </v-col>
@@ -48,7 +49,12 @@ export default {
     category: 'ALL'
   }),
   computed: {
-    ...mapGetters(['categories', 'errorCategories', 'products']),
+    ...mapGetters([
+      'categories',
+      'errorCategories',
+      'products',
+      'errorProducts'
+    ]),
     getCategories() {
       if (this.categories) {
         return [
