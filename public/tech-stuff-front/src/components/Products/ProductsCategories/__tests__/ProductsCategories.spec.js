@@ -71,26 +71,26 @@ describe('ProductsCategories.vue', () => {
     expect(alert.exists()).toBeTruthy();
   });
 
-  // test('should dispatch a "fetchProductsByCategory" action with the correct payload', () => {
-  //   const items = generateArray(2, i => {
-  //     return {
-  //       id: i,
-  //       name: `Name ${i}`
-  //     };
-  //   });
-  //   const store = createStore({
-  //     actions: {
-  //       fetchProductsByCategory: jest.fn(() => Promise.resolve(items))
-  //     },
-  //     getters: {
-  //       categories: () => items
-  //     }
-  //   });
-  //   const wrapper = createWrapper(ProductsCategories, {
-  //     store
-  //   });
-  //   wrapper.find('.v-radio:first-child input').setChecked(true);
-  //   console.log(store);
-  //   expect(store.actions.fetchProductsByCategory).toHaveBeenCalled();
-  // });
+  test('should dispatch a "fetchProductsByCategory" action with the correct payload', () => {
+    const items = generateArray(2, i => {
+      return {
+        id: i,
+        name: `Name ${i}`
+      };
+    });
+    const store = createStore({
+      getters: {
+        categories: () => items
+      }
+    });
+    const wrapper = createWrapper(ProductsCategories, {
+      store
+    });
+    store.dispatch = jest.fn(() => Promise.resolve());
+    wrapper.find('.v-radio:last-child input').setChecked(true);
+    expect(store.dispatch).toHaveBeenCalledWith(
+      'fetchProductsByCategory',
+      items[1].id
+    );
+  });
 });
