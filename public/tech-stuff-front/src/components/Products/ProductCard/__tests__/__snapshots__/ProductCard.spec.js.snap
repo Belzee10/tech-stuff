@@ -42,8 +42,12 @@ exports[`ProductCard.vue should render correctly 1`] = `
   </div>
    
   <div
-    class="v-card__actions"
+    class="v-card__actions d-flex justify-space-between"
   >
+    <!---->
+     
+    <!---->
+     
     <button
       class="btn-full text-capitalize v-btn v-btn--block v-btn--depressed theme--light v-size--small secondary"
       type="button"

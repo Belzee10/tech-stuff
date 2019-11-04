@@ -15,29 +15,28 @@
       <span class="font-weight-bold price">${{ price }}</span>
     </v-card-text>
 
-    <v-card-actions>
-      <div v-if="inStock > 0">
-        <v-btn
-          small
-          block
-          depressed
-          class="btn-small"
-          color="secondary"
-          @click="$emit('remove-from-cart', id)"
-        >
-          -
-        </v-btn>
-        <v-btn
-          small
-          block
-          depressed
-          class="btn-small"
-          color="secondary"
-          @click="$emit('add-to-cart', id)"
-        >
-          +
-        </v-btn>
-      </div>
+    <v-card-actions class="d-flex justify-space-between">
+      <v-btn
+        v-if="inStock > 0"
+        small
+        depressed
+        class="btn-small"
+        color="secondary"
+        @click="removeFromCart"
+      >
+        <v-icon small>mdi-cart-minus</v-icon>
+      </v-btn>
+      <span v-if="inStock > 0"> {{ inStock }} in Cart </span>
+      <v-btn
+        v-if="inStock > 0"
+        small
+        depressed
+        class="btn-small"
+        color="secondary"
+        @click="addToCart"
+      >
+        <v-icon small>mdi-cart-plus</v-icon>
+      </v-btn>
       <v-btn
         v-else
         small
@@ -45,7 +44,7 @@
         depressed
         class="btn-full text-capitalize"
         color="secondary"
-        @click="$emit('add-to-cart', id)"
+        @click="addToCart"
       >
         <v-icon small class="mr-1">mdi-cart-plus</v-icon>
         Add to Cart
@@ -55,34 +54,11 @@
 </template>
 
 <script>
+import { productMixin } from '@/mixins';
+
 export default {
   name: 'ProductCard',
-  props: {
-    id: {
-      type: Number,
-      default: null
-    },
-    name: {
-      type: String,
-      default: ''
-    },
-    price: {
-      type: Number,
-      default: null
-    },
-    image: {
-      type: String,
-      default: ''
-    },
-    brand: {
-      type: String,
-      default: ''
-    },
-    inStock: {
-      type: Number,
-      default: 0
-    }
-  }
+  mixins: [productMixin]
 };
 </script>
 

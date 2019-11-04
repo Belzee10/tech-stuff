@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductItem.vue should render correctly 1`] = `
+<div
+  class="product-item v-card v-sheet theme--light"
+>
+  <div
+    class="container py-0"
+  >
+    <div
+      class="row justify-space-between"
+    >
+      <div
+        class="pa-0 col col-auto"
+      >
+        <div
+          class="v-responsive v-image"
+          style="height: 100px; width: 100px;"
+        >
+          <div
+            class="v-image__image v-image__image--preload v-image__image--cover"
+            mode="in-out"
+            name="fade-transition"
+            style="background-image: url(https://picsum.photos/id/11/10/6); background-position: center center;"
+          />
+          <div
+            class="v-responsive__content"
+          />
+        </div>
+      </div>
+       
+      <div
+        class="pa-0 col col-5"
+      >
+        <div
+          class="py-2 d-flex flex-column fill-height"
+        >
+          <h4
+            class="body-1"
+          >
+            
+          </h4>
+           
+          <span
+            class="caption"
+          >
+            
+          </span>
+           
+          <span
+            class="font-weight-bold price d-block mt-auto"
+          >
+            $
+          </span>
+        </div>
+      </div>
+       
+      <div
+        class="text-center pa-0 col col-2"
+      >
+        <div
+          class="row flex-column ma-0 fill-height justify-space-between"
+        >
+          <!---->
+           
+          <!---->
+           
+          <div
+            class="pa-0 d-flex flex-column justify-center align-center col"
+          >
+            <button
+              class="btn-full v-btn v-btn--flat v-btn--icon v-btn--round theme--light v-size--default secondary--text"
+              type="button"
+            >
+              <span
+                class="v-btn__content"
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate mdi mdi-cart-plus theme--light"
+                  style="font-size: 16px;"
+                />
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

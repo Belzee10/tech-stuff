@@ -33,7 +33,11 @@
           </v-col>
         </v-row>
         <v-row v-else>
-          <v-col v-for="product in getProducts" :key="product.id" cols="3">
+          <v-col
+            v-for="product in getProducts"
+            :key="product.id"
+            :cols="getCols"
+          >
             <product-card v-if="view === 'cards'" v-bind="product" />
             <product-item
               v-if="view === 'items'"
@@ -82,6 +86,9 @@ export default {
     getProducts() {
       if (this.products) return this.sortProducts(this.products, this.sort);
       else return this.products;
+    },
+    getCols() {
+      return this.view === 'cards' ? 3 : 4;
     }
   },
   mounted() {
