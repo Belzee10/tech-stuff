@@ -1,4 +1,4 @@
-import { generateArray } from '../index.js';
+import { generateArray, generateNumber } from '../index.js';
 
 describe('helpers.js', () => {
   test('should generate an array with the length and object provided', () => {
@@ -33,5 +33,11 @@ describe('helpers.js', () => {
         name: `name 0`
       }
     ]);
+  });
+
+  test('should generate a random integer', () => {
+    const first = generateNumber(1, 100);
+    const second = generateNumber(1, 100);
+    expect(first).not.toEqual(second);
   });
 });

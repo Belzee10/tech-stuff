@@ -14,3 +14,11 @@ export const generateArray = (count, item = {}) => {
         };
   });
 };
+
+/**
+ * generate random integer
+ * @param {Number} from
+ * @param {Number} to
+ */
+export const generateNumber = (from, to) =>
+  Math.floor(Math.random() * to) + from;

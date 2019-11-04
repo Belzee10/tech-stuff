@@ -17,7 +17,7 @@
       <v-col cols="10">
         <v-row>
           <v-col>
-            <items-options />
+            <items-options :sort-value="sort" @sort-by-price="handleSort" />
           </v-col>
         </v-row>
         <v-row v-if="errorProducts">
@@ -28,7 +28,7 @@
           </v-col>
         </v-row>
         <v-row v-else>
-          <v-col v-for="product in products" :key="product.id" cols="3">
+          <v-col v-for="product in getProducts" :key="product.id" cols="3">
             <product-card v-bind="product" />
           </v-col>
         </v-row>
@@ -47,7 +47,8 @@ export default {
   name: 'ProductsCategories',
   components: { CategoriesFilter, ItemsOptions, ProductCard },
   data: () => ({
-    category: 'ALL'
+    category: 'ALL',
+    sort: 'ASC'
   }),
   computed: {
     ...mapGetters([
@@ -66,6 +67,10 @@ export default {
           ...this.categories
         ];
       } else return this.categories;
+    },
+    getProducts() {
+      if (this.products) return this.sortProducts(this.products, this.sort);
+      else return this.products;
     }
   },
   mounted() {
@@ -82,6 +87,15 @@ export default {
       this.category = value;
       if (this.category === 'ALL') this.fetchProducts();
       else this.fetchProductsByCategory(this.category);
+    },
+    sortProducts(items, predicate) {
+      const newItems = [...items];
+      if (predicate === 'ASC')
+        return newItems.sort((a, b) => a.price - b.price);
+      else return newItems.sort((a, b) => b.price - a.price);
+    },
+    handleSort(value) {
+      this.sort = value;
     }
   }
 };

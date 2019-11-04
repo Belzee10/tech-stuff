@@ -1,5 +1,5 @@
 <template>
-  <v-card class=" product-card">
+  <v-card class="product-card">
     <v-img
       class="white--text align-end"
       height="150px"
@@ -12,7 +12,7 @@
     <v-card-subtitle class="pb-0">{{ brand }}</v-card-subtitle>
 
     <v-card-text class="text--primary">
-      <span class="font-weight-bold">${{ price }}</span>
+      <span class="font-weight-bold price">${{ price }}</span>
     </v-card-text>
 
     <v-card-actions>

@@ -1,5 +1,5 @@
 import { createWrapper, createStore } from '@/test-utils/factories';
-import { generateArray } from '@/helpers';
+import { generateArray, generateNumber } from '@/helpers';
 import ProductsCategories from '../ProductsCategories.vue';
 
 describe('ProductsCategories.vue', () => {
@@ -92,5 +92,53 @@ describe('ProductsCategories.vue', () => {
       'fetchProductsByCategory',
       items[1].id
     );
+  });
+
+  test('should render all products sorted "ASC"', () => {
+    const items = generateArray(10, i => {
+      return {
+        id: i,
+        price: generateNumber(1, 100)
+      };
+    });
+    const newItems = [...items];
+    const ascItems = newItems.sort((a, b) => a.price - b.price);
+    const store = createStore({
+      getters: {
+        products: () => items
+      }
+    });
+    const wrapper = createWrapper(ProductsCategories, {
+      store
+    });
+    const prices = wrapper.findAll('.product-card .price');
+    prices.wrappers.forEach((wrap, i) => {
+      expect(wrap.text()).toContain(ascItems[i].price);
+    });
+  });
+
+  test('should sort the products "DESC"', () => {
+    const items = generateArray(10, i => {
+      return {
+        id: i,
+        price: generateNumber(1, 100)
+      };
+    });
+    const newItems = [...items];
+    const descItems = newItems.sort((a, b) => b.price - a.price);
+    const store = createStore({
+      getters: {
+        products: () => items
+      }
+    });
+    const wrapper = createWrapper(ProductsCategories, {
+      store
+    });
+    wrapper.find('.v-select').vm.$emit('change', 'DESC');
+
+    const prices = wrapper.findAll('.product-card .price');
+    prices.wrappers.forEach((wrap, i) => {
+      expect(wrap.text()).toContain(descItems[i].price);
+    });
   });
 });

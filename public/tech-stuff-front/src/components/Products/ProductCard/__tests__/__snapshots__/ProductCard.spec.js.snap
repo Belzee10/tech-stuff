@@ -2,7 +2,7 @@
 
 exports[`ProductCard.vue should render correctly 1`] = `
 <div
-  class=" product-card v-card v-sheet theme--light"
+  class="product-card v-card v-sheet theme--light"
 >
   <div
     class="v-responsive v-image white--text align-end"
@@ -35,7 +35,7 @@ exports[`ProductCard.vue should render correctly 1`] = `
     class="v-card__text text--primary"
   >
     <span
-      class="font-weight-bold"
+      class="font-weight-bold price"
     >
       $
     </span>

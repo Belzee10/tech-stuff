@@ -20,8 +20,8 @@ describe('ItemsOptions.vue', () => {
     const wrapper = createWrapper(ItemsOptions, {
       propsData: props
     });
-    wrapper.find('.v-select').vm.$emit('change');
-    expect(wrapper.emitted('sort-by-price')[0]).toBeTruthy();
+    wrapper.find('.v-select').vm.$emit('change', 'DESC');
+    expect(wrapper.emitted('sort-by-price')[0]).toEqual(['DESC']);
   });
 
   test('should emit a "search" event', () => {
