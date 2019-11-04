@@ -1,5 +1,5 @@
 <template>
-  <v-card class="product-item">
+  <v-card class="product-item" @click.stop="cardClick">
     <v-container class="py-0">
       <v-row justify="space-between">
         <v-col class="pa-0" cols="auto">

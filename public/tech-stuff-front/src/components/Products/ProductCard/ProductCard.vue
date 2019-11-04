@@ -1,5 +1,5 @@
 <template>
-  <v-card class="product-card">
+  <v-card class="product-card" @click.stop="cardClick">
     <v-img
       class="white--text align-end"
       height="150px"

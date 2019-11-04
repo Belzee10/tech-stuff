@@ -49,3 +49,18 @@ export const searchProducts = async query => {
     throw error.message;
   }
 };
+
+/**
+ * get a single product
+ * @param {String} id
+ */
+export const getProduct = async id => {
+  try {
+    const res = await httpClient.get(`/products/details/${id}`);
+    const result = filterObject(res.data, 'products');
+    return result;
+  } catch (error) {
+    logger.error(`PRODUCTS_SINGLE: **${error}**`);
+    throw error.message;
+  }
+};

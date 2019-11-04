@@ -5,7 +5,9 @@ import mutations from './mutations.js';
 const state = {
   products: [],
   errorProducts: '',
-  view: 'cards'
+  view: 'cards',
+  product: null,
+  errorProduct: ''
 };
 
 export default {

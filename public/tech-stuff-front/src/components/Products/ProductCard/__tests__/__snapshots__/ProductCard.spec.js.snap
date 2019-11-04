@@ -2,7 +2,8 @@
 
 exports[`ProductCard.vue should render correctly 1`] = `
 <div
-  class="product-card v-card v-sheet theme--light"
+  class="product-card v-card v-card--link v-sheet theme--light"
+  tabindex="0"
 >
   <div
     class="v-responsive v-image white--text align-end"

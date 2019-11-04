@@ -1,12 +1,15 @@
 import {
   SET_PRODUCTS,
   SET_PRODUCTS_ERROR,
-  SET_VIEW
+  SET_VIEW,
+  SET_PRODUCT,
+  SET_PRODUCT_ERROR
 } from './mutation-types.js';
 import {
   getProducts,
   getProductsByCategory,
-  searchProducts
+  searchProducts,
+  getProduct
 } from '@/api/products.js';
 
 const actions = {
@@ -63,7 +66,23 @@ const actions = {
         error
       });
     }
-  }
+  },
+
+  async fetchProduct({ commit }, id) {
+    try {
+      const product = await getProduct(id);
+      commit({
+        type: SET_PRODUCT,
+        product
+      });
+      return product;
+    } catch (error) {
+      commit({
+        type: SET_PRODUCT_ERROR,
+        error
+      });
+    }
+  },
 };
 
 export default actions;

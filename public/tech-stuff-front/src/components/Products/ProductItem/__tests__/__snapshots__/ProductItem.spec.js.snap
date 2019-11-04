@@ -2,7 +2,8 @@
 
 exports[`ProductItem.vue should render correctly 1`] = `
 <div
-  class="product-item v-card v-sheet theme--light"
+  class="product-item v-card v-card--link v-sheet theme--light"
+  tabindex="0"
 >
   <div
     class="container py-0"

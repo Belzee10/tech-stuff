@@ -31,6 +31,9 @@ export default {
     },
     removeFromCart() {
       this.$emit('remove-from-cart', this.id);
+    },
+    cardClick() {
+      this.$router.push({ name: 'product', params: { productId: this.id } });
     }
   }
 };

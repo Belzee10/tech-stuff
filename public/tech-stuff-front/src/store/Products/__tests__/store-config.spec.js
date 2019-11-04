@@ -83,4 +83,26 @@ describe('Products store', () => {
     await flushPromises();
     expect(store.state.products).toEqual(items);
   });
+
+  test(`should dispatch a "fetchProduct" action and update the store`, async () => {
+    const item = {};
+    const productId = 1;
+    mockAxios.get.mockResolvedValueOnce({ data: item });
+    const newStore = { ...storeConfig };
+    const store = new Vuex.Store(newStore);
+    store.dispatch('fetchProduct', productId);
+    expect(mockAxios.get).toHaveBeenCalledWith(`${url}/details/${productId}`);
+    await flushPromises();
+    expect(store.state.product).toEqual(item);
+  });
+
+  test(`should dispatch a failed "fetchProduct" action and update the store`, async () => {
+    const error = 'error';
+    mockAxios.get.mockRejectedValueOnce({ message: error });
+    const newStore = { ...storeConfig };
+    const store = new Vuex.Store(newStore);
+    store.dispatch('fetchProduct');
+    await flushPromises();
+    expect(store.state.errorProduct).toEqual(error);
+  });
 });
