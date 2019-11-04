@@ -47,7 +47,8 @@ describe('ProductsCategories.vue', () => {
     });
     const store = createStore({
       getters: {
-        products: () => items
+        products: () => items,
+        view: () => 'cards'
       }
     });
     const wrapper = createWrapper(ProductsCategories, {
@@ -140,5 +141,26 @@ describe('ProductsCategories.vue', () => {
     prices.wrappers.forEach((wrap, i) => {
       expect(wrap.text()).toContain(descItems[i].price);
     });
+  });
+
+  test('should dispatch a "changeView" action with the correct payload', () => {
+    const view = 'items';
+    const items = generateArray(2, {
+      name: '',
+      value: ''
+    });
+    const store = createStore({
+      getters: {
+        products: () => items,
+        view: () => 'cards'
+      }
+    });
+    const wrapper = createWrapper(ProductsCategories, {
+      store
+    });
+    store.dispatch = jest.fn();
+
+    wrapper.find(`.v-item-group button.${view}`).trigger('click');
+    expect(store.dispatch).toHaveBeenCalledWith('changeView', view);
   });
 });

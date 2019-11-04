@@ -1,4 +1,8 @@
-import { SET_PRODUCTS, SET_PRODUCTS_ERROR } from './mutation-types.js';
+import {
+  SET_PRODUCTS,
+  SET_PRODUCTS_ERROR,
+  SET_VIEW
+} from './mutation-types.js';
 import { getProducts, getProductsByCategory } from '@/api/products.js';
 
 const actions = {
@@ -32,6 +36,13 @@ const actions = {
         error
       });
     }
+  },
+
+  changeView({ commit }, view) {
+    commit({
+      type: SET_VIEW,
+      view
+    });
   }
 };
 

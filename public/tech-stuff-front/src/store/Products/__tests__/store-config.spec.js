@@ -59,4 +59,12 @@ describe('Products store', () => {
     await flushPromises();
     expect(store.state.errorProducts).toEqual(error);
   });
+
+  test('should dispatch a "changeView" action and update the store', () => {
+    const view = 'items';
+    const newStore = { ...storeConfig };
+    const store = new Vuex.Store(newStore);
+    store.dispatch('changeView', view);
+    expect(store.state.view).toEqual(view);
+  });
 });

@@ -17,7 +17,12 @@
       <v-col cols="10">
         <v-row>
           <v-col>
-            <items-options :sort-value="sort" @sort-by-price="handleSort" />
+            <items-options
+              :sort-value="sort"
+              :view-value="view"
+              @sort-by-price="handleSort"
+              @change-view="handleChangeView"
+            />
           </v-col>
         </v-row>
         <v-row v-if="errorProducts">
@@ -29,7 +34,11 @@
         </v-row>
         <v-row v-else>
           <v-col v-for="product in getProducts" :key="product.id" cols="3">
-            <product-card v-bind="product" />
+            <product-card v-if="view === 'cards'" v-bind="product" />
+            <product-item
+              v-if="view === 'items'"
+              v-bind="product"
+            ></product-item>
           </v-col>
         </v-row>
       </v-col>
@@ -41,11 +50,12 @@
 import CategoriesFilter from '@/components/Categories/CategoriesFilter';
 import ItemsOptions from '@/components/Shared/ItemsOptions';
 import ProductCard from '@/components/Products/ProductCard';
+import ProductItem from '@/components/Products/ProductItem';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'ProductsCategories',
-  components: { CategoriesFilter, ItemsOptions, ProductCard },
+  components: { CategoriesFilter, ItemsOptions, ProductCard, ProductItem },
   data: () => ({
     category: 'ALL',
     sort: 'ASC'
@@ -55,7 +65,8 @@ export default {
       'categories',
       'errorCategories',
       'products',
-      'errorProducts'
+      'errorProducts',
+      'view'
     ]),
     getCategories() {
       if (this.categories) {
@@ -81,7 +92,8 @@ export default {
     ...mapActions([
       'fetchCategories',
       'fetchProducts',
-      'fetchProductsByCategory'
+      'fetchProductsByCategory',
+      'changeView'
     ]),
     handleCheck(value) {
       this.category = value;
@@ -96,6 +108,9 @@ export default {
     },
     handleSort(value) {
       this.sort = value;
+    },
+    handleChangeView(value) {
+      this.changeView(value);
     }
   }
 };
