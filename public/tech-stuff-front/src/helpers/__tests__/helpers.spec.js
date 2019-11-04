@@ -1,4 +1,10 @@
-import { generateArray, generateNumber } from '../index.js';
+import { generateArray, generateNumber, filterObject } from '../index.js';
+
+jest.mock('../filters-presets.js', () => {
+  return {
+    products: ['id', 'name']
+  };
+});
 
 describe('helpers.js', () => {
   test('should generate an array with the length and object provided', () => {
@@ -39,5 +45,33 @@ describe('helpers.js', () => {
     const first = generateNumber(1, 100);
     const second = generateNumber(1, 100);
     expect(first).not.toEqual(second);
+  });
+
+  test('should filter the object properties with an "array" provided', () => {
+    const obj = {
+      id: 1,
+      name: 'name',
+      desc: 'desc'
+    };
+    const exp = ['id', 'name'];
+    const expextedResult = {
+      id: 1,
+      name: 'name'
+    };
+    expect(filterObject(obj, exp)).toEqual(expextedResult);
+  });
+
+  test('should filter the object properties with a "preset" provided', () => {
+    const obj = {
+      id: 1,
+      name: 'name',
+      desc: 'desc'
+    };
+    const exp = 'products';
+    const expextedResult = {
+      id: 1,
+      name: 'name'
+    };
+    expect(filterObject(obj, exp)).toEqual(expextedResult);
   });
 });

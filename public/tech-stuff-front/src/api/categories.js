@@ -1,5 +1,6 @@
 import httpClient from '../services/http-client.js';
 import * as logger from 'loglevel';
+import { filterObject } from '@/helpers';
 
 /**
  * get all categories
@@ -7,7 +8,8 @@ import * as logger from 'loglevel';
 export const getCategories = async () => {
   try {
     const res = await httpClient.get('/categories/all');
-    return res.data.data;
+    const result = res.data.data.map(item => filterObject(item, 'categories'));
+    return result;
   } catch (error) {
     logger.error(`CATEGORIES_ALL: **${error}**`);
     throw error.message;

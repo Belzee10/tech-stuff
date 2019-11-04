@@ -1,3 +1,4 @@
+import preset from './filters-presets.js';
 /**
  * generate an array
  * @param {Number} count
@@ -22,3 +23,19 @@ export const generateArray = (count, item = {}) => {
  */
 export const generateNumber = (from, to) =>
   Math.floor(Math.random() * to) + from;
+
+/**
+ * filter the expected object properties
+ * @param {Object} obj
+ * @param {*} exp
+ */
+export const filterObject = (obj, exp) => {
+  const result = {};
+  Object.keys(obj).forEach(key => {
+    let expValue;
+    if (Array.isArray(exp)) expValue = exp;
+    else if (typeof exp === 'string') expValue = preset[exp];
+    if (expValue.includes(key)) result[key] = obj[key];
+  });
+  return result;
+};

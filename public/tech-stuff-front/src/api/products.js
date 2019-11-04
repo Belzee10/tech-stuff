@@ -1,5 +1,6 @@
 import httpClient from '../services/http-client.js';
 import * as logger from 'loglevel';
+import { filterObject } from '@/helpers';
 
 /**
  * get all products
@@ -7,7 +8,8 @@ import * as logger from 'loglevel';
 export const getProducts = async () => {
   try {
     const res = await httpClient.get('/products/all');
-    return res.data;
+    const result = res.data.map(item => filterObject(item, 'products'));
+    return result;
   } catch (error) {
     logger.error(`PRODUCTS_ALL: **${error}**`);
     throw error.message;
@@ -21,7 +23,8 @@ export const getProducts = async () => {
 export const getProductsByCategory = async categoryId => {
   try {
     const res = await httpClient.get(`/products/product-by/${categoryId}`);
-    return res.data;
+    const result = res.data.map(item => filterObject(item, 'products'));
+    return result;
   } catch (error) {
     logger.error(`PRODUCTS_BY_CATEGORY: **${error}**`);
     throw error.message;
