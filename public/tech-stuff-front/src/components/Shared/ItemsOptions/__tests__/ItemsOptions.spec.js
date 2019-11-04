@@ -31,6 +31,16 @@ describe('ItemsOptions.vue', () => {
     expect(wrapper.emitted('search')[0]).toEqual([value]);
   });
 
+  test('should emit a "clear-search" event', () => {
+    const value = 'q';
+    const wrapper = createWrapper(ItemsOptions);
+    wrapper.find('.v-text-field input').setValue(value);
+    const clearIcon = wrapper.find('.v-input [role=button]');
+    expect(clearIcon.exists()).toBeTruthy();
+    clearIcon.trigger('click');
+    expect(wrapper.emitted('clear-search')).toBeTruthy();
+  });
+
   test('should render correctly', () => {
     const props = {
       sortValue: 'ASC',

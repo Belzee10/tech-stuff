@@ -35,13 +35,13 @@ exports[`ItemsOptions.vue should render correctly 1`] = `
               >
                 <label
                   class="v-label theme--light"
-                  for="input-58"
+                  for="input-78"
                   style="left: 0px; position: absolute;"
                 >
                   Search
                 </label>
                 <input
-                  id="input-58"
+                  id="input-78"
                   type="text"
                 />
               </div>
@@ -95,7 +95,7 @@ exports[`ItemsOptions.vue should render correctly 1`] = `
             <div
               aria-expanded="false"
               aria-haspopup="listbox"
-              aria-owns="list-63"
+              aria-owns="list-83"
               class="v-input__slot"
               role="button"
             >
@@ -115,7 +115,7 @@ exports[`ItemsOptions.vue should render correctly 1`] = `
               >
                 <label
                   class="v-label v-label--active theme--light"
-                  for="input-63"
+                  for="input-83"
                   style="left: 0px; position: absolute;"
                 >
                   Sort
@@ -130,7 +130,7 @@ exports[`ItemsOptions.vue should render correctly 1`] = `
                   </div>
                   <input
                     aria-readonly="true"
-                    id="input-63"
+                    id="input-83"
                     readonly="readonly"
                     type="text"
                   />

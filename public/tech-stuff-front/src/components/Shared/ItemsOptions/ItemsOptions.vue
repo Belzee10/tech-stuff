@@ -8,6 +8,7 @@
             clearable
             label="Search"
             @input="value => $emit('search', value)"
+            @click:clear="() => $emit('clear-search')"
           >
             <v-icon slot="prepend">mdi-magnify</v-icon>
           </v-text-field>

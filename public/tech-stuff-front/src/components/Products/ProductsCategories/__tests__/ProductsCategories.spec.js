@@ -3,6 +3,10 @@ import { generateArray, generateNumber } from '@/helpers';
 import ProductsCategories from '../ProductsCategories.vue';
 
 describe('ProductsCategories.vue', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   test('should render all "categories"', () => {
     const items = generateArray(2, {
       name: '',
@@ -47,8 +51,7 @@ describe('ProductsCategories.vue', () => {
     });
     const store = createStore({
       getters: {
-        products: () => items,
-        view: () => 'cards'
+        products: () => items
       }
     });
     const wrapper = createWrapper(ProductsCategories, {
@@ -69,6 +72,19 @@ describe('ProductsCategories.vue', () => {
       store
     });
     const alert = wrapper.find('.v-alert.error--text');
+    expect(alert.exists()).toBeTruthy();
+  });
+
+  test('should render a Message if there are not Products', () => {
+    const store = createStore({
+      getters: {
+        products: () => []
+      }
+    });
+    const wrapper = createWrapper(ProductsCategories, {
+      store
+    });
+    const alert = wrapper.find('.v-alert.alert-message');
     expect(alert.exists()).toBeTruthy();
   });
 
@@ -145,16 +161,7 @@ describe('ProductsCategories.vue', () => {
 
   test('should dispatch a "changeView" action with the correct payload', () => {
     const view = 'items';
-    const items = generateArray(2, {
-      name: '',
-      value: ''
-    });
-    const store = createStore({
-      getters: {
-        products: () => items,
-        view: () => 'cards'
-      }
-    });
+    const store = createStore();
     const wrapper = createWrapper(ProductsCategories, {
       store
     });
@@ -163,4 +170,30 @@ describe('ProductsCategories.vue', () => {
     wrapper.find(`.v-item-group button.${view}`).trigger('click');
     expect(store.dispatch).toHaveBeenCalledWith('changeView', view);
   });
+
+  test('should dispatch a "searchProducts" action with the correct payload', () => {
+    const query = 'query';
+    const store = createStore();
+    const wrapper = createWrapper(ProductsCategories, {
+      store
+    });
+    store.dispatch = jest.fn();
+    wrapper.find('.v-text-field input').setValue(query);
+    jest.runAllTimers();
+    expect(store.dispatch).toHaveBeenCalledWith('searchProducts', query);
+  });
+
+  test('should dispatch a "fetchProducts" action when clear the search input', () => {
+    const query = 'query';
+    const store = createStore();
+    const wrapper = createWrapper(ProductsCategories, {
+      store
+    });
+    store.dispatch = jest.fn();
+    wrapper.find('.v-text-field input').setValue(query);
+    wrapper.find('.v-input [role=button]').trigger('click');
+    expect(store.dispatch).toHaveBeenCalledWith('fetchProducts');
+  });
+
+  test.todo('should render correctly');
 });

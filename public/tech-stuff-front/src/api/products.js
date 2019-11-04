@@ -30,3 +30,22 @@ export const getProductsByCategory = async categoryId => {
     throw error.message;
   }
 };
+
+/**
+ * search products by name
+ * @param {String} query
+ */
+export const searchProducts = async query => {
+  try {
+    const res = await httpClient.get('/products/all', {
+      params: {
+        search: query
+      }
+    });
+    const result = res.data.map(item => filterObject(item, 'products'));
+    return result;
+  } catch (error) {
+    logger.error(`SEARCH_PRODUCTS: **${error}**`);
+    throw error.message;
+  }
+};

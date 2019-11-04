@@ -42,7 +42,11 @@ const createWrapper = (Component, overrides) => {
  * @param {Object} overrides
  */
 const createStore = overrides => {
-  const defaultStoreConfig = {};
+  const defaultStoreConfig = {
+    getters: {
+      view: () => 'cards'
+    }
+  };
   return new Vuex.Store(mergeWith(defaultStoreConfig, overrides, customizer));
 };
 

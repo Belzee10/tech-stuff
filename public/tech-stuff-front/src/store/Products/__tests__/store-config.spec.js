@@ -67,4 +67,20 @@ describe('Products store', () => {
     store.dispatch('changeView', view);
     expect(store.state.view).toEqual(view);
   });
+
+  test('should dispatch a "searchProducts" action and update the store', async () => {
+    const query = 'query';
+    const items = generateArray(2);
+    mockAxios.get.mockResolvedValueOnce({ data: items });
+    const newStore = { ...storeConfig };
+    const store = new Vuex.Store(newStore);
+    store.dispatch('searchProducts', query);
+    expect(mockAxios.get).toHaveBeenCalledWith(`${url}/all`, {
+      params: {
+        search: query
+      }
+    });
+    await flushPromises();
+    expect(store.state.products).toEqual(items);
+  });
 });

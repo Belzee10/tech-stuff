@@ -7,4 +7,5 @@ describe('Navbar.vue', () => {
   test('should render the "user options"', () => {
     // const wrapper = createWrapper(Navbar);
   });
+  test.todo('should render correctly');
 });

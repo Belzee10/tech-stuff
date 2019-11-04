@@ -22,6 +22,8 @@
               :view-value="view"
               @sort-by-price="handleSort"
               @change-view="handleChangeView"
+              @search="handleSearch"
+              @clear-search="handleClearSearch"
             />
           </v-col>
         </v-row>
@@ -29,6 +31,19 @@
           <v-col cols="6" offset="3">
             <v-alert dense text prominent icon="mdi-cloud-alert" type="error">
               We couldn't load the Products :(
+            </v-alert>
+          </v-col>
+        </v-row>
+        <v-row v-else-if="getProducts && getProducts.length === 0">
+          <v-col cols="6" offset="3">
+            <v-alert
+              color="blue-grey"
+              prominent
+              dark
+              dense
+              class="alert-message"
+            >
+              We sorry. There are not Products to show
             </v-alert>
           </v-col>
         </v-row>
@@ -100,7 +115,8 @@ export default {
       'fetchCategories',
       'fetchProducts',
       'fetchProductsByCategory',
-      'changeView'
+      'changeView',
+      'searchProducts'
     ]),
     handleCheck(value) {
       this.category = value;
@@ -118,6 +134,14 @@ export default {
     },
     handleChangeView(value) {
       this.changeView(value);
+    },
+    handleSearch(value) {
+      setTimeout(() => {
+        this.searchProducts(value);
+      }, 1000);
+    },
+    handleClearSearch() {
+      this.fetchProducts();
     }
   }
 };
