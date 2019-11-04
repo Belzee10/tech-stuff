@@ -27,6 +27,7 @@ Route::get('products/all/{user_id?}', 'PublicController@productsAll');//get all 
 Route::get('products/product-by/{category}/{user_id?}', 'PublicController@productByCategory');//filter product by category Public
 Route::get('products/details/{id}/{user_id?}', 'PublicController@productDetails');//get product details Public
 
+
 Route::post('products/{product}', 'ProductController@update');//update product
 
 Route::get('search/{model}/{term?}', 'SearchController@search');//search

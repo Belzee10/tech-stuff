@@ -18,11 +18,14 @@ class PublicController extends Controller
         return CategoryResource::collection(Category::latest()->get());
     }
 
-    public function productsAll($user_id = null) 
+    public function productsAll(Request $request, $user_id = null) 
     {
-        if (!$user_id) {
-            return Product::latest()->get();//get all products
+        $input = $request->input('search');
+        
+        if (!$user_id) {     
+            return Product::query()->where('name', 'LIKE', "%{$input}%")->latest()->get();
         }
+        // TODO check search param here
         else {
             if ($order = Order::where('user_id', $user_id)->where('isCompleted', false)->first()) {//get incomplete order of the user
                 $products = $this->setQuantities($order); 
