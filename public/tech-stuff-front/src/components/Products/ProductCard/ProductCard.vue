@@ -1,5 +1,5 @@
 <template>
-  <v-card class="product-card" @click.stop="cardClick">
+  <v-card class="product-card" @click="cardClick">
     <v-img
       class="white--text align-end"
       height="150px"
@@ -22,7 +22,7 @@
         depressed
         class="btn-small"
         color="secondary"
-        @click="removeFromCart"
+        @click.stop="removeFromCart"
       >
         <v-icon small>mdi-cart-minus</v-icon>
       </v-btn>
@@ -33,7 +33,7 @@
         depressed
         class="btn-small"
         color="secondary"
-        @click="addToCart"
+        @click.stop="addToCart"
       >
         <v-icon small>mdi-cart-plus</v-icon>
       </v-btn>
@@ -44,7 +44,7 @@
         depressed
         class="btn-full text-capitalize"
         color="secondary"
-        @click="addToCart"
+        @click.stop="addToCart"
       >
         <v-icon small class="mr-1">mdi-cart-plus</v-icon>
         Add to Cart

@@ -1,10 +1,18 @@
 <template>
   <fragment>
     <v-app-bar class="px-10" app color="primary" dark dense tile>
-      <div class="mr-2">
-        <v-img src="../../../assets/logo.png" height="30" width="30" contain />
-      </div>
-      <v-toolbar-title>{{ appTitle }}</v-toolbar-title>
+      <router-link to="/">
+        <div class="mr-2 d-flex">
+          <v-img
+            to="home"
+            src="../../../assets/logo.png"
+            height="30"
+            width="30"
+            contain
+          />
+          <v-toolbar-title>{{ appTitle }}</v-toolbar-title>
+        </div>
+      </router-link>
 
       <v-spacer></v-spacer>
       <v-app-bar-nav-icon
@@ -56,4 +64,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.v-toolbar__title {
+  color: white;
+}
+</style>

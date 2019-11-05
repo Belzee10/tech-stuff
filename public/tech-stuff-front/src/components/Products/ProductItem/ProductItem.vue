@@ -31,7 +31,7 @@
                 icon
                 color="secondary"
                 class="btn-small add"
-                @click="addToCart"
+                @click.stop="addToCart"
               >
                 <v-icon small>mdi-cart-plus</v-icon>
               </v-btn>
@@ -50,7 +50,7 @@
                 icon
                 color="secondary"
                 class="btn-small remove"
-                @click="removeFromCart"
+                @click.stop="removeFromCart"
               >
                 <v-icon small>mdi-cart-minus</v-icon>
               </v-btn>
@@ -59,7 +59,12 @@
               v-else
               class="pa-0 d-flex flex-column justify-center align-center"
             >
-              <v-btn icon color="secondary" class="btn-full" @click="addToCart">
+              <v-btn
+                icon
+                color="secondary"
+                class="btn-full"
+                @click.stop="addToCart"
+              >
                 <v-icon small>mdi-cart-plus</v-icon>
               </v-btn>
             </v-col>
