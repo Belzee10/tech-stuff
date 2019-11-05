@@ -4,7 +4,8 @@ import mutations from './mutations.js';
 
 const state = {
   user: null,
-  errorRegister: ''
+  errorRegister: '',
+  errorLogin: ''
 };
 
 export default {

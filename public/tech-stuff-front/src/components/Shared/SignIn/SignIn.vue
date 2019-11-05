@@ -4,20 +4,6 @@
       <v-col cols="4" offset="4">
         <v-form ref="form" v-model="valid" class="mt-10" lazy-validation>
           <v-text-field
-            v-model="name"
-            class="name"
-            :rules="nameRules"
-            label="Name"
-            required
-          ></v-text-field>
-          <v-text-field
-            v-model="lastName"
-            class="last-name"
-            :rules="lastNameRules"
-            label="Last Name"
-            required
-          ></v-text-field>
-          <v-text-field
             v-model="email"
             class="email"
             :rules="emailRules"
@@ -32,11 +18,11 @@
             label="Password"
             required
           ></v-text-field>
-          <v-btn :disabled="!valid" color="primary" block @click="submit">
-            Sign up
+          <v-btn :disabled="!valid" color="secondary" block @click="submit">
+            Sign in
           </v-btn>
         </v-form>
-        <v-alert v-if="errorRegister" class="mt-5" type="error">
+        <v-alert v-if="errorLogin" class="mt-5" type="error">
           An error ocurred
         </v-alert>
       </v-col>
@@ -48,13 +34,9 @@
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
-  name: 'SignUp',
+  name: 'SignIn',
   data: () => ({
     valid: true,
-    name: '',
-    nameRules: [v => !!v || 'Name is required'],
-    lastName: '',
-    lastNameRules: [v => !!v || 'Last Name is required'],
     email: '',
     emailRules: [
       v => !!v || 'E-mail is required',
@@ -64,18 +46,15 @@ export default {
     passwordRules: [v => !!v || 'Last Name is required']
   }),
   computed: {
-    ...mapGetters(['errorRegister'])
+    ...mapGetters(['errorLogin'])
   },
   methods: {
-    ...mapActions(['register']),
+    ...mapActions(['login']),
     submit() {
       if (this.$refs.form.validate()) {
-        this.register({
-          name: this.name,
-          lastName: this.lastName,
+        this.login({
           email: this.email,
-          password: this.password,
-          role: 'member'
+          password: this.password
         }).then(() => this.$router.push({ name: 'home' }));
       }
     }

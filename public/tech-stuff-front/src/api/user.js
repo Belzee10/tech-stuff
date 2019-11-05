@@ -16,3 +16,18 @@ export const register = async data => {
     throw error.message;
   }
 };
+
+/**
+ * login
+ * @param {Object} data
+ */
+export const login = async data => {
+  try {
+    const res = await httpClient.post('/signin', data);
+    const result = filterObject(res.data.user, 'user');
+    return result;
+  } catch (error) {
+    logger.error(`USER_LOGIN: **${error}**`);
+    throw error.message;
+  }
+};
