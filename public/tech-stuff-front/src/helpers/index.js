@@ -22,7 +22,7 @@ export const generateArray = (count, item = {}) => {
  * @param {Number} to
  */
 export const generateNumber = (from, to) =>
-  Math.floor(Math.random() * to) + from;
+  Math.floor(Math.random() * (to - from + 1) + from);
 
 /**
  * filter the expected object properties

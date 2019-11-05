@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 
 import Home from '../views/Home.vue';
 import Product from '../views/Product.vue';
+import Register from '../views/Register.vue';
 
 Vue.use(VueRouter);
 
@@ -16,6 +17,11 @@ const routes = [
     path: '/products/:productId',
     name: 'product',
     component: Product
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: Register
   }
 ];
 

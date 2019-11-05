@@ -1,6 +1,6 @@
 export default {
-  categories: ['id', 'name'],
-  products: [
+  category: ['id', 'name'],
+  product: [
     'id',
     'name',
     'price',
@@ -9,6 +9,6 @@ export default {
     'description',
     'category_id'
   ],
-  orders: [],
-  user: []
+  order: [],
+  user: ['id', 'name', 'lastName', 'email', 'role', 'token']
 };

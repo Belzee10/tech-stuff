@@ -8,7 +8,7 @@ import { filterObject } from '@/helpers';
 export const getCategories = async () => {
   try {
     const res = await httpClient.get('/categories/all');
-    const result = res.data.data.map(item => filterObject(item, 'categories'));
+    const result = res.data.data.map(item => filterObject(item, 'category'));
     return result;
   } catch (error) {
     logger.error(`CATEGORIES_ALL: **${error}**`);

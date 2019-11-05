@@ -1,0 +1,203 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignUp.vue shoud render correctly 1`] = `
+<div
+  class="container"
+>
+  <div
+    class="row"
+  >
+    <div
+      class="col col-4 offset-4"
+    >
+      <form
+        class="v-form mt-10"
+        novalidate="novalidate"
+      >
+        <div
+          class="v-input name theme--light v-text-field"
+        >
+          <div
+            class="v-input__control"
+          >
+            <div
+              class="v-input__slot"
+            >
+              <div
+                class="v-text-field__slot"
+              >
+                <label
+                  class="v-label theme--light"
+                  for="input-46"
+                  style="left: 0px; position: absolute;"
+                >
+                  Name
+                </label>
+                <input
+                  id="input-46"
+                  required="required"
+                  type="text"
+                />
+              </div>
+            </div>
+            <div
+              class="v-text-field__details"
+            >
+              <div
+                class="v-messages theme--light"
+              >
+                <span
+                  class="v-messages__wrapper"
+                  name="message-transition"
+                  tag="div"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+         
+        <div
+          class="v-input last-name theme--light v-text-field"
+        >
+          <div
+            class="v-input__control"
+          >
+            <div
+              class="v-input__slot"
+            >
+              <div
+                class="v-text-field__slot"
+              >
+                <label
+                  class="v-label theme--light"
+                  for="input-49"
+                  style="left: 0px; position: absolute;"
+                >
+                  Last Name
+                </label>
+                <input
+                  id="input-49"
+                  required="required"
+                  type="text"
+                />
+              </div>
+            </div>
+            <div
+              class="v-text-field__details"
+            >
+              <div
+                class="v-messages theme--light"
+              >
+                <span
+                  class="v-messages__wrapper"
+                  name="message-transition"
+                  tag="div"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+         
+        <div
+          class="v-input email theme--light v-text-field"
+        >
+          <div
+            class="v-input__control"
+          >
+            <div
+              class="v-input__slot"
+            >
+              <div
+                class="v-text-field__slot"
+              >
+                <label
+                  class="v-label theme--light"
+                  for="input-52"
+                  style="left: 0px; position: absolute;"
+                >
+                  E-mail
+                </label>
+                <input
+                  id="input-52"
+                  required="required"
+                  type="text"
+                />
+              </div>
+            </div>
+            <div
+              class="v-text-field__details"
+            >
+              <div
+                class="v-messages theme--light"
+              >
+                <span
+                  class="v-messages__wrapper"
+                  name="message-transition"
+                  tag="div"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+         
+        <div
+          class="v-input password theme--light v-text-field"
+        >
+          <div
+            class="v-input__control"
+          >
+            <div
+              class="v-input__slot"
+            >
+              <div
+                class="v-text-field__slot"
+              >
+                <label
+                  class="v-label theme--light"
+                  for="input-55"
+                  style="left: 0px; position: absolute;"
+                >
+                  Password
+                </label>
+                <input
+                  id="input-55"
+                  required="required"
+                  type="password"
+                />
+              </div>
+            </div>
+            <div
+              class="v-text-field__details"
+            >
+              <div
+                class="v-messages theme--light"
+              >
+                <span
+                  class="v-messages__wrapper"
+                  name="message-transition"
+                  tag="div"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+         
+        <button
+          class="v-btn v-btn--block v-btn--contained theme--light v-size--default primary"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            
+          Sign up
+        
+          </span>
+        </button>
+      </form>
+       
+      <!---->
+    </div>
+  </div>
+</div>
+`;

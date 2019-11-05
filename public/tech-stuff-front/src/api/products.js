@@ -8,7 +8,7 @@ import { filterObject } from '@/helpers';
 export const getProducts = async () => {
   try {
     const res = await httpClient.get('/products/all');
-    const result = res.data.map(item => filterObject(item, 'products'));
+    const result = res.data.map(item => filterObject(item, 'product'));
     return result;
   } catch (error) {
     logger.error(`PRODUCTS_ALL: **${error}**`);
@@ -23,7 +23,7 @@ export const getProducts = async () => {
 export const getProductsByCategory = async categoryId => {
   try {
     const res = await httpClient.get(`/products/product-by/${categoryId}`);
-    const result = res.data.map(item => filterObject(item, 'products'));
+    const result = res.data.map(item => filterObject(item, 'product'));
     return result;
   } catch (error) {
     logger.error(`PRODUCTS_BY_CATEGORY: **${error}**`);
@@ -42,7 +42,7 @@ export const searchProducts = async query => {
         search: query
       }
     });
-    const result = res.data.map(item => filterObject(item, 'products'));
+    const result = res.data.map(item => filterObject(item, 'product'));
     return result;
   } catch (error) {
     logger.error(`SEARCH_PRODUCTS: **${error}**`);
@@ -57,7 +57,7 @@ export const searchProducts = async query => {
 export const getProduct = async id => {
   try {
     const res = await httpClient.get(`/products/details/${id}`);
-    const result = filterObject(res.data, 'products');
+    const result = filterObject(res.data, 'product');
     return result;
   } catch (error) {
     logger.error(`PRODUCTS_SINGLE: **${error}**`);

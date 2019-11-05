@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from '@vue/test-utils';
+import { mount, shallowMount, createLocalVue } from '@vue/test-utils';
 import mergeWith from 'lodash.mergewith';
 import Vuetify from 'vuetify';
 import Vuex from 'vuex';
@@ -11,6 +11,11 @@ let vuetify;
 beforeEach(() => {
   vuetify = new Vuetify();
 });
+
+const mountMapper = {
+  mount,
+  shallowMount
+};
 
 const customizer = (_, srcValue) => {
   if (Array.isArray(srcValue)) {
@@ -26,12 +31,12 @@ const customizer = (_, srcValue) => {
  * @param {*} Component
  * @param {Object} overrides
  */
-const createWrapper = (Component, overrides) => {
+const createWrapper = (Component, overrides, mountType = 'mount') => {
   const defaultMountingOptions = {
     localVue,
     vuetify
   };
-  return mount(
+  return mountMapper[mountType](
     Component,
     mergeWith(defaultMountingOptions, overrides, customizer)
   );

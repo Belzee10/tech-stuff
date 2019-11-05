@@ -15,6 +15,11 @@
       </router-link>
 
       <v-spacer></v-spacer>
+      <v-btn text small>Sign in</v-btn>
+      <span class="ml-1 mr-2">or</span>
+      <v-btn :to="{ name: 'register' }" class="ma-2" outlined small
+        >Sign up</v-btn
+      >
       <v-app-bar-nav-icon
         class="hidden-md-and-up"
         @click="toggleDraw"
