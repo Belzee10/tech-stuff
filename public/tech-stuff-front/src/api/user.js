@@ -31,3 +31,16 @@ export const login = async data => {
     throw error.message;
   }
 };
+
+/**
+ * logout
+ */
+export const logout = async () => {
+  try {
+    const res = await httpClient.delete('/logout');
+    return res;
+  } catch (error) {
+    logger.error(`USER_LOGOUT: **${error}**`);
+    throw error.message;
+  }
+};

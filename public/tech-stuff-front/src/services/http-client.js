@@ -13,8 +13,8 @@ const httpClient = axios.create(config);
  * @param {*} config
  */
 const authInterceptor = config => {
-  const token = appLocalStorage.getItem('token');
-  config.headers.Authorization = token;
+  const user = appLocalStorage.getItem('user');
+  if (user) config.headers.Authorization = `Bearer ${user.token}`;
   return config;
 };
 

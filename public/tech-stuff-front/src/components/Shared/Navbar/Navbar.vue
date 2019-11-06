@@ -15,11 +15,34 @@
       </router-link>
 
       <v-spacer></v-spacer>
-      <v-btn text small :to="{ name: 'login' }">Sign in</v-btn>
-      <span class="ml-1 mr-2">or</span>
-      <v-btn :to="{ name: 'register' }" class="ma-2" outlined small
-        >Sign up</v-btn
-      >
+      <v-menu v-if="user">
+        <template v-slot:activator="{ on }">
+          <v-btn text class="btn-user text-lowercase" v-on="on">
+            {{ user.email }}
+          </v-btn>
+        </template>
+
+        <v-list class="user-options">
+          <v-list-item
+            v-for="(item, index) in getUserOptions"
+            :key="index"
+            @click="() => goTo(item.link)"
+          >
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item>
+          <v-divider></v-divider>
+          <v-list-item class="logout" @click="handleLogout">
+            <v-list-item-title>Logout</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+      <div v-else>
+        <v-btn text small :to="{ name: 'login' }">Sign in</v-btn>
+        <span class="ml-1 mr-2">or</span>
+        <v-btn :to="{ name: 'register' }" class="ma-2" outlined small
+          >Sign up</v-btn
+        >
+      </div>
       <v-app-bar-nav-icon
         class="hidden-md-and-up"
         @click="toggleDraw"
@@ -49,6 +72,8 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   name: 'Navbar',
   props: {
@@ -59,11 +84,54 @@ export default {
   },
   data: () => ({
     showDraw: false,
-    userOptions: []
+    userOptions: [
+      {
+        title: 'My Orders',
+        onlyAdmin: false,
+        link: ''
+      },
+      {
+        title: 'Manage Orders',
+        onlyAdmin: true,
+        link: ''
+      },
+      {
+        title: 'Manage Categories',
+        onlyAdmin: true,
+        link: ''
+      },
+      {
+        title: 'Manage Products',
+        onlyAdmin: true,
+        link: ''
+      },
+      {
+        title: 'Manage Users',
+        onlyAdmin: true,
+        link: ''
+      }
+    ]
   }),
+  computed: {
+    ...mapGetters(['user']),
+    getUserOptions() {
+      return this.user.role === 'member'
+        ? this.userOptions.filter(item => !item.onlyAdmin)
+        : this.userOptions;
+    }
+  },
   methods: {
+    ...mapActions(['logout']),
     toggleDraw() {
       this.showDraw = !this.showDraw;
+    },
+    goTo(link) {
+      this.$router.push({ name: link });
+    },
+    handleLogout() {
+      this.logout().then(() =>
+        this.$router.push({ name: 'home' }).catch(() => {})
+      );
     }
   }
 };

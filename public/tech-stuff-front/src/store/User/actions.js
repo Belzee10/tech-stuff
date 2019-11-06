@@ -1,9 +1,10 @@
 import {
   SET_USER,
   SET_REGISTER_ERROR,
-  SET_LOGIN_ERROR
+  SET_LOGIN_ERROR,
+  REMOVE_USER
 } from './mutation-types.js';
-import { register, login } from '@/api/user.js';
+import { register, login, logout } from '@/api/user.js';
 
 const actions = {
   async register({ commit }, data) {
@@ -34,6 +35,17 @@ const actions = {
         type: SET_LOGIN_ERROR,
         error
       });
+      throw error;
+    }
+  },
+
+  async logout({ commit }) {
+    try {
+      await logout();
+      commit({
+        type: REMOVE_USER
+      });
+    } catch (error) {
       throw error;
     }
   }

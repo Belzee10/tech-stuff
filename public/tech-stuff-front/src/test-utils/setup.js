@@ -15,3 +15,10 @@ global.console = {
   info: console.info,
   debug: console.debug
 };
+
+/**
+ * wrap components with this
+ */
+const el = document.createElement('div');
+el.setAttribute('data-app', true);
+document.body.appendChild(el);

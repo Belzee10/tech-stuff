@@ -19,7 +19,7 @@ module.exports = {
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname'
   ],
-  setupFiles: ['./src/test-utils/setup.js'],
+  setupFiles: ['./src/test-utils/setup.js', 'jest-localstorage-mock'],
   collectCoverageFrom: ['src/**/*.{js,vue}'],
   verbose: true
 };
