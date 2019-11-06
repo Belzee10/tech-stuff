@@ -65,5 +65,25 @@ describe('Navbar.vue', () => {
     expect(mocks.$router.push).toHaveBeenCalledWith({ name: 'home' });
   });
 
-  test.todo('should render correctly');
+  test('should render correctly', () => {
+    const mocks = {
+      $router: {
+        push: jest.fn(() => Promise.reject())
+      }
+    };
+    const user = {
+      role: 'member'
+    };
+
+    const store = createStore({
+      getters: {
+        user: () => user
+      }
+    });
+    const wrapper = createWrapper(Navbar, {
+      store,
+      mocks
+    });
+    expect(wrapper.element).toMatchSnapshot();
+  });
 });

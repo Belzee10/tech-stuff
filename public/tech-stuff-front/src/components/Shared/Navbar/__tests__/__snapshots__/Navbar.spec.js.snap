@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar.vue should render correctly 1`] = `
+<fragment>
+  <header
+    class="px-10 v-sheet v-sheet--tile theme--dark v-toolbar v-toolbar--dense v-app-bar v-app-bar--fixed primary"
+    style="height: 48px; margin-top: 0px; transform: translateY(0px); left: 0px; right: 0px;"
+  >
+    <div
+      class="v-toolbar__content"
+      style="height: 48px;"
+    >
+      <router-link
+        to="/"
+      >
+        <div
+          class="mr-2 d-flex"
+        >
+          <div
+            class="v-responsive v-image"
+            style="height: 30px; width: 30px;"
+            to="home"
+          >
+            <div
+              class="v-image__image v-image__image--preload v-image__image--contain"
+              mode="in-out"
+              name="fade-transition"
+              style="background-position: center center;"
+            />
+            <div
+              class="v-responsive__content"
+            />
+          </div>
+           
+          <div
+            class="v-toolbar__title"
+          >
+            
+          </div>
+        </div>
+      </router-link>
+       
+      <div
+        class="spacer"
+      />
+       
+      <div
+        class="hidden-md-and-down"
+      >
+        <div
+          class="v-menu"
+        >
+          <button
+            class="btn-user text-lowercase v-btn v-btn--flat v-btn--text theme--dark v-size--default"
+            type="button"
+          >
+            <span
+              class="v-btn__content"
+            >
+              
+            
+            
+              <i
+                aria-hidden="true"
+                class="v-icon notranslate mdi mdi-menu-down theme--dark"
+                style="font-size: 16px;"
+              />
+            </span>
+          </button>
+          <div
+            class="v-menu__content theme--light "
+            role="menu"
+            style="max-height: auto; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+          />
+        </div>
+      </div>
+       
+      <button
+        class="v-app-bar__nav-icon hidden-md-and-up v-btn v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default"
+        type="button"
+      >
+        <span
+          class="v-btn__content"
+        >
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate mdi mdi-menu theme--dark"
+          />
+        </span>
+      </button>
+    </div>
+  </header>
+   
+  <nav
+    class="primary v-navigation-drawer v-navigation-drawer--close v-navigation-drawer--fixed v-navigation-drawer--is-mobile v-navigation-drawer--right theme--dark"
+    style="height: 100vh; top: 0px; transform: translateX(100%); width: 256px;"
+  >
+    <div
+      class="v-navigation-drawer__content"
+    >
+      <div
+        class="v-list-item theme--dark"
+        tabindex="-1"
+      >
+        <div
+          class="v-list-item__content"
+        >
+          <div
+            class="v-list-item__title title"
+          >
+            
+          
+        
+          </div>
+        </div>
+      </div>
+       
+      <hr
+        aria-orientation="horizontal"
+        class="v-divider theme--dark"
+        role="separator"
+      />
+       
+      <div
+        class="v-list v-sheet v-sheet--tile theme--dark v-list--dense v-list--nav"
+      >
+        <div
+          class="v-list-item v-list-item--link theme--dark"
+          tabindex="0"
+        >
+          <div
+            class="v-list-item__content"
+          >
+            <div
+              class="v-list-item__title"
+            >
+              My Orders
+            </div>
+          </div>
+        </div>
+         
+        <hr
+          aria-orientation="horizontal"
+          class="v-divider theme--dark"
+          role="separator"
+        />
+         
+        <div
+          class="logout v-list-item v-list-item--link theme--dark"
+          tabindex="0"
+        >
+          <div
+            class="v-list-item__title"
+          >
+            Logout
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="v-navigation-drawer__border"
+    />
+  </nav>
+</fragment>
+`;

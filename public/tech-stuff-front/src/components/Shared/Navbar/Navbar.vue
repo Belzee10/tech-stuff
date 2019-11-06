@@ -20,6 +20,7 @@
           <template v-slot:activator="{ on }">
             <v-btn text class="btn-user text-lowercase" v-on="on">
               {{ user.email }}
+              <v-icon small>mdi-menu-down</v-icon>
             </v-btn>
           </template>
 
@@ -126,7 +127,7 @@ export default {
       {
         title: 'Manage Users',
         onlyAdmin: true,
-        link: ''
+        link: 'users'
       }
     ]
   }),

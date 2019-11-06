@@ -5,6 +5,7 @@ import Home from '../views/Home.vue';
 import Product from '../views/Product.vue';
 import Register from '../views/Register.vue';
 import Login from '../views/Login.vue';
+import Users from '../views/Admin/Users.vue';
 
 Vue.use(VueRouter);
 
@@ -28,8 +29,18 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login
+  },
+  {
+    path: '/users',
+    name: 'users',
+    component: Users,
+    meta: {
+      requiresAuth: true
+    }
   }
 ];
+
+// TODO add beforeEach navigation guard
 
 const router = new VueRouter({
   routes
