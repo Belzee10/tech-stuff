@@ -15,33 +15,35 @@
       </router-link>
 
       <v-spacer></v-spacer>
-      <v-menu v-if="user">
-        <template v-slot:activator="{ on }">
-          <v-btn text class="btn-user text-lowercase" v-on="on">
-            {{ user.email }}
-          </v-btn>
-        </template>
+      <div class="hidden-md-and-down">
+        <v-menu v-if="user" offset-y>
+          <template v-slot:activator="{ on }">
+            <v-btn text class="btn-user text-lowercase" v-on="on">
+              {{ user.email }}
+            </v-btn>
+          </template>
 
-        <v-list class="user-options">
-          <v-list-item
-            v-for="(item, index) in getUserOptions"
-            :key="index"
-            @click="() => goTo(item.link)"
+          <v-list class="user-options">
+            <v-list-item
+              v-for="(item, index) in getUserOptions"
+              :key="index"
+              @click="() => goTo(item.link)"
+            >
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item>
+            <v-divider></v-divider>
+            <v-list-item class="logout" @click="handleLogout">
+              <v-list-item-title>Logout</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+        <div v-else>
+          <v-btn text small :to="{ name: 'login' }">Sign in</v-btn>
+          <span class="ml-1 mr-2">or</span>
+          <v-btn :to="{ name: 'register' }" class="ma-2" outlined small
+            >Sign up</v-btn
           >
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item>
-          <v-divider></v-divider>
-          <v-list-item class="logout" @click="handleLogout">
-            <v-list-item-title>Logout</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
-      <div v-else>
-        <v-btn text small :to="{ name: 'login' }">Sign in</v-btn>
-        <span class="ml-1 mr-2">or</span>
-        <v-btn :to="{ name: 'register' }" class="ma-2" outlined small
-          >Sign up</v-btn
-        >
+        </div>
       </div>
       <v-app-bar-nav-icon
         class="hidden-md-and-up"
@@ -60,10 +62,26 @@
 
       <v-divider></v-divider>
 
-      <v-list dense nav>
-        <v-list-item v-for="item in userOptions" :key="item.title" link>
+      <v-list v-if="user" dense nav>
+        <v-list-item v-for="(item, index) in getUserOptions" :key="index" link>
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-divider></v-divider>
+        <v-list-item class="logout" @click="handleLogout">
+          <v-list-item-title>Logout</v-list-item-title>
+        </v-list-item>
+      </v-list>
+      <v-list v-else dense nav>
+        <v-list-item link :to="{ name: 'login' }">
+          <v-list-item-content>
+            <v-list-item-title>Sign in</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item link :to="{ name: 'register' }">
+          <v-list-item-content>
+            <v-list-item-title>Sign up</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
