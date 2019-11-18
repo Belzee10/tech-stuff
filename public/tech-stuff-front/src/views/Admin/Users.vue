@@ -1,5 +1,8 @@
 <template>
-  <user-list />
+  <fragment>
+    <h4 class="title">Manage Users</h4>
+    <user-list />
+  </fragment>
 </template>
 
 <script>
