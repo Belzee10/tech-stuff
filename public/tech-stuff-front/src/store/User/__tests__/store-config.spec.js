@@ -3,9 +3,12 @@ import { createLocalVue } from '@vue/test-utils';
 import flushPromises from 'flush-promises';
 import mockAxios from 'jest-mock-axios';
 import storeConfig from '../index.js';
+import { generateArray } from '@/helpers';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
+
+const url = '/users';
 
 describe('User store', () => {
   afterEach(() => {
@@ -86,5 +89,29 @@ describe('User store', () => {
     await flushPromises();
     expect(store.state.user).toBeNull();
     expect(localStorage.removeItem).toHaveBeenCalledWith('user');
+  });
+
+  test('should dispatch a "fetchUsers" action and update the store', async () => {
+    expect.assertions(2);
+    const items = generateArray(2);
+    const params = {};
+    mockAxios.get.mockResolvedValueOnce({ data: { data: items } });
+    const newStore = { ...storeConfig };
+    const store = new Vuex.Store(newStore);
+    store.dispatch('fetchUsers', params);
+    expect(mockAxios.get).toHaveBeenCalledWith(url, { params });
+    await flushPromises();
+    expect(store.state.users).toEqual(items);
+  });
+
+  test('should dispatch a failed "fetchUsers" action and update the store', async () => {
+    expect.assertions(1);
+    const error = 'error';
+    mockAxios.get.mockRejectedValueOnce({ message: error });
+    const newStore = { ...storeConfig };
+    const store = new Vuex.Store(newStore);
+    store.dispatch('fetchUsers');
+    await flushPromises();
+    expect(store.state.errorUsers).toEqual(error);
   });
 });

@@ -1,5 +1,7 @@
 import {
   SET_USER,
+  SET_USERS,
+  SET_USERS_ERROR,
   SET_REGISTER_ERROR,
   SET_LOGIN_ERROR,
   REMOVE_USER
@@ -26,6 +28,14 @@ const mutations = {
     state.user = null;
     appLocalStorage.removeItem('user');
     delete httpClient.defaults.headers.common['Authorization'];
+  },
+
+  [SET_USERS]: (state, payload) => {
+    state.users = payload.users;
+  },
+
+  [SET_USERS_ERROR]: (state, payload) => {
+    state.errorUsers = payload.error;
   }
 };
 

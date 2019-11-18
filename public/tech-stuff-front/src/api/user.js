@@ -51,10 +51,8 @@ export const logout = async () => {
  */
 export const getUsers = async params => {
   try {
-    const res = await httpClient.get('/users', {
-      params
-    });
-    const result = res.data.map(item => filterObject(item, 'user'));
+    const res = await httpClient.get('/users', { params });
+    const result = res.data.data.map(item => filterObject(item, 'user'));
     return result;
   } catch (error) {
     logger.error(`USERS_ALL: **${error}**`);

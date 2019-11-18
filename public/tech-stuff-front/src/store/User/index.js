@@ -6,6 +6,8 @@ import appLocalStorage from '@/services/storage.js';
 
 const state = {
   user: appLocalStorage.getItem('user') || null,
+  users: [],
+  errorUsers: '',
   errorRegister: '',
   errorLogin: ''
 };
