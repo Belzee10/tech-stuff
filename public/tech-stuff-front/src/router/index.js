@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import store from '../store';
 
 import Home from '../views/Home.vue';
 import Product from '../views/Product.vue';
@@ -40,10 +41,23 @@ const routes = [
   }
 ];
 
-// TODO add beforeEach navigation guard
-
 const router = new VueRouter({
   routes
+});
+
+router.beforeEach((to, _, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!store.getters.user) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;
