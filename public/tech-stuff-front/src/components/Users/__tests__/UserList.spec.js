@@ -1,6 +1,7 @@
 import { createWrapper, createStore } from '@/test-utils/factories';
 import { generateArray } from '@/helpers';
 import UserList from '../UserList.vue';
+import Modal from '@/components/Shared/Modal';
 
 describe('UserList.vue', () => {
   test('should render the "users"', () => {
@@ -43,4 +44,24 @@ describe('UserList.vue', () => {
     const alert = wrapper.find('.v-alert.alert-message');
     expect(alert.exists()).toBeTruthy();
   });
+
+  test('should emit a "deleteUser" action and update the store', () => {
+    const items = generateArray(1);
+    const store = createStore({
+      getters: {
+        users: () => items
+      }
+    });
+    const wrapper = createWrapper(UserList, {
+      store
+    });
+    store.dispatch = jest.fn();
+    wrapper.find('.delete-user').trigger('click');
+    const modal = wrapper.find(Modal);
+    expect(modal.exists()).toBeTruthy();
+    modal.find('.confirm-delete').trigger('click');
+    expect(store.dispatch).toHaveBeenCalledWith('deleteUser', items[0].id);
+  });
+
+  test.todo('should render correctly');
 });

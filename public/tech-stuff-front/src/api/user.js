@@ -59,3 +59,17 @@ export const getUsers = async params => {
     throw error.message;
   }
 };
+
+/**
+ * delete user
+ * @param {Number} id
+ */
+export const deleteUser = async id => {
+  try {
+    const res = await httpClient.delete(`/users/${id}`);
+    return res;
+  } catch (error) {
+    logger.error(`USERS_DELETE: **${error}**`);
+    throw error.message;
+  }
+};

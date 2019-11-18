@@ -114,4 +114,18 @@ describe('User store', () => {
     await flushPromises();
     expect(store.state.errorUsers).toEqual(error);
   });
+
+  test('should dispatch a "deleteUser" action and update the store', async () => {
+    expect.assertions(2);
+    mockAxios.delete.mockResolvedValueOnce({});
+    const newStore = { ...storeConfig };
+    const store = new Vuex.Store(newStore);
+    const userId = store.state.users[0].id;
+    const newUsers = [...store.state.users];
+    const result = newUsers.filter(item => item.id !== userId);
+    store.dispatch('deleteUser', userId);
+    expect(mockAxios.delete).toHaveBeenCalledWith(`${url}/${userId}`);
+    await flushPromises();
+    expect(store.state.users).toEqual(result);
+  });
 });

@@ -1,6 +1,7 @@
 import {
   SET_USER,
   SET_USERS,
+  DELETE_USER,
   SET_USERS_ERROR,
   SET_REGISTER_ERROR,
   SET_LOGIN_ERROR,
@@ -36,6 +37,10 @@ const mutations = {
 
   [SET_USERS_ERROR]: (state, payload) => {
     state.errorUsers = payload.error;
+  },
+
+  [DELETE_USER]: (state, payload) => {
+    state.users = state.users.filter(item => item.id !== payload.userId);
   }
 };
 

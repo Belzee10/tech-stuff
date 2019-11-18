@@ -1,6 +1,31 @@
 <template>
-  <v-row>
+  <v-row class="user-list">
     <v-col>
+      <modal
+        v-if="isModalOpen"
+        :is-open="isModalOpen"
+        :title="currentItem.modalTitle"
+        attach
+      >
+        <template slot="default">
+          <div class="d-flex justify-end">
+            <v-btn
+              color="error"
+              small
+              class="text-capitalize mr-1 confirm-delete"
+              @click="handleDeleteUser"
+            >
+              Delete
+            </v-btn>
+            <v-btn
+              small
+              class="text-capitalize confirm-cancel"
+              @click="handleCancel"
+              >Cancel</v-btn
+            >
+          </div>
+        </template>
+      </modal>
       <v-btn color="secondary" class="text-capitalize mb-2" small
         >New User</v-btn
       >
@@ -49,10 +74,23 @@
                     </span>
                   </td>
                   <td>
-                    <v-btn text icon color="warning" title="Edit">
+                    <v-btn
+                      text
+                      icon
+                      color="warning"
+                      title="Edit"
+                      class="edit-user"
+                    >
                       <v-icon small>mdi-pencil</v-icon>
                     </v-btn>
-                    <v-btn text icon color="error" title="Delete">
+                    <v-btn
+                      text
+                      icon
+                      color="error"
+                      title="Delete"
+                      class="delete-user"
+                      @click="() => showModalDelete(item.id)"
+                    >
                       <v-icon small>mdi-delete</v-icon>
                     </v-btn>
                   </td>
@@ -68,9 +106,15 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import Modal from '@/components/Shared/Modal';
 
 export default {
   name: 'UserList',
+  components: { Modal },
+  data: () => ({
+    isModalOpen: false,
+    currentItem: null
+  }),
   computed: {
     ...mapGetters(['users', 'errorUsers']),
     getUsers() {
@@ -86,7 +130,7 @@ export default {
     this.fetchUsers();
   },
   methods: {
-    ...mapActions(['fetchUsers']),
+    ...mapActions(['fetchUsers', 'deleteUser']),
     roleStyles(role) {
       switch (role) {
         case 'member':
@@ -98,6 +142,27 @@ export default {
         default:
           return;
       }
+    },
+    openModal() {
+      this.isModalOpen = true;
+    },
+    closeModal() {
+      this.isModalOpen = false;
+    },
+    showModalDelete(id) {
+      this.currentItem = {
+        userId: id,
+        modalTitle: 'Confirm Delete'
+      };
+      this.openModal();
+    },
+    async handleDeleteUser() {
+      await this.deleteUser(this.currentItem.userId);
+      this.closeModal();
+    },
+    handleCancel() {
+      this.currentItem = null;
+      this.closeModal();
     }
   }
 };

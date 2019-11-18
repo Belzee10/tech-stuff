@@ -1,12 +1,13 @@
 import {
   SET_USER,
   SET_USERS,
+  DELETE_USER,
   SET_USERS_ERROR,
   SET_REGISTER_ERROR,
   SET_LOGIN_ERROR,
   REMOVE_USER
 } from './mutation-types.js';
-import { register, login, logout, getUsers } from '@/api/user.js';
+import { register, login, logout, getUsers, deleteUser } from '@/api/user.js';
 
 const actions = {
   async register({ commit }, data) {
@@ -60,6 +61,21 @@ const actions = {
         users
       });
       return users;
+    } catch (error) {
+      commit({
+        type: SET_USERS_ERROR,
+        error
+      });
+    }
+  },
+
+  async deleteUser({ commit }, id) {
+    try {
+      await deleteUser(id);
+      commit({
+        type: DELETE_USER,
+        userId: id
+      });
     } catch (error) {
       commit({
         type: SET_USERS_ERROR,

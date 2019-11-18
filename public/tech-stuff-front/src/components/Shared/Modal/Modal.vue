@@ -1,10 +1,11 @@
 <template>
   <v-dialog v-model="isOpen" persistent width="500">
     <v-card>
-      <v-card-title class="headline grey lighten-2 title" primary-title>
+      <v-card-title class="headline title" primary-title>
         {{ title }}
       </v-card-title>
-      <v-card-text>
+      <v-divider></v-divider>
+      <v-card-text class="pa-4">
         <slot></slot>
       </v-card-text>
     </v-card>
