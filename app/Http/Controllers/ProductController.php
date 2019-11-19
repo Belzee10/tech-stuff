@@ -38,7 +38,7 @@ class ProductController extends Controller
         $product->save();        
         
         return response()->json(
-            $product->name              
+            $product              
         );
     }
 
@@ -79,7 +79,7 @@ class ProductController extends Controller
         $product->save();       
 
         return response()->json(
-            $product->name
+            $product
         );
     }
 

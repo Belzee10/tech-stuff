@@ -53,7 +53,7 @@ class UserController extends Controller
         }
 
         return response()->json(
-            $user->name
+            $user
         );
     }
 
@@ -86,7 +86,7 @@ class UserController extends Controller
         $user->save();
 
         return response()->json(
-            $user->name
+            $user
         );
     }
 

@@ -73,3 +73,18 @@ export const deleteUser = async id => {
     throw error.message;
   }
 };
+
+/**
+ * create user
+ * @param {Object} data
+ */
+export const createUser = async data => {
+  try {
+    const res = await httpClient.post('/users', data);
+    const result = filterObject(res.data, 'user');
+    return result;
+  } catch (error) {
+    logger.error(`USERS_CREATE: **${error}**`);
+    throw error.message;
+  }
+};

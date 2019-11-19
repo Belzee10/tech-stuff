@@ -34,7 +34,7 @@ class CategoryController extends Controller
         $category->save();
 
         return response()->json(            
-                $category->name  
+                $category  
         );
     }
 
@@ -62,7 +62,7 @@ class CategoryController extends Controller
         $category->save();
 
         return response()->json(
-            $category->name
+            $category
         );
     }
 
