@@ -128,4 +128,19 @@ describe('User store', () => {
     await flushPromises();
     expect(store.state.users).toEqual(result);
   });
+
+  test('should dispatch a "createUser" action and update the store', async () => {
+    expect.assertions(2);
+    const item = {
+      name: 'name'
+    };
+    mockAxios.post.mockResolvedValueOnce({ data: item });
+    const newStore = { ...storeConfig };
+    const store = new Vuex.Store(newStore);
+    const newUsers = [item, ...store.state.users];
+    store.dispatch('createUser', item);
+    expect(mockAxios.post).toHaveBeenCalledWith(url, item);
+    await flushPromises();
+    expect(store.state.users).toEqual(newUsers);
+  });
 });
