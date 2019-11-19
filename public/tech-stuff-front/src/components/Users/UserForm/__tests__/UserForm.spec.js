@@ -20,4 +20,6 @@ describe('UserForm.vue', () => {
     button.trigger('click');
     expect(wrapper.emitted('submit')[0]).toEqual([formValue]);
   });
+
+  test.todo('should render correctly');
 });

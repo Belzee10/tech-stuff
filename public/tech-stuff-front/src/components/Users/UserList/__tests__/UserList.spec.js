@@ -59,7 +59,7 @@ describe('UserList.vue', () => {
     wrapper.find('.delete-user').trigger('click');
     const modal = wrapper.find(Modal);
     expect(modal.exists()).toBeTruthy();
-    modal.find('.confirm-delete').trigger('click');
+    modal.find('.confirm').trigger('click');
     expect(store.dispatch).toHaveBeenCalledWith('deleteUser', items[0].id);
   });
 

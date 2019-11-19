@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal.vue should render correctly 1`] = `
+<div
+  class="v-dialog__container"
+  role="dialog"
+>
+  <div
+    class="v-dialog__content"
+    role="document"
+    style="z-index: 0;"
+  >
+    <div
+      class="v-dialog v-dialog--persistent"
+      style="width: 500px; display: none;"
+    />
+  </div>
+</div>
+`;

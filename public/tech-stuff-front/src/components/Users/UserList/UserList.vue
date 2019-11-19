@@ -4,26 +4,15 @@
       <modal
         v-if="isModalOpen"
         :is-open="isModalOpen"
-        :title="currentItem.modalTitle"
+        :title="currentItem.modalProps.title"
+        :confirm-button="currentItem.modalProps.confirmButton"
+        :cancel-button="currentItem.modalProps.cancelButton"
         attach
+        @confirm="handleConfirm"
+        @cancel="handleCancel"
       >
         <template slot="default">
-          <div class="d-flex justify-end">
-            <v-btn
-              color="error"
-              small
-              class="text-capitalize mr-1 confirm-delete"
-              @click="handleDeleteUser"
-            >
-              Delete
-            </v-btn>
-            <v-btn
-              small
-              class="text-capitalize confirm-cancel"
-              @click="handleCancel"
-              >Cancel</v-btn
-            >
-          </div>
+          {{ currentItem.modalProps.text }}
         </template>
       </modal>
       <v-btn color="secondary" class="text-capitalize mb-2" small
@@ -89,7 +78,7 @@
                       color="error"
                       title="Delete"
                       class="delete-user"
-                      @click="() => showModalDelete(item.id)"
+                      @click="() => showModalDelete(item)"
                     >
                       <v-icon small>mdi-delete</v-icon>
                     </v-btn>
@@ -149,19 +138,36 @@ export default {
     closeModal() {
       this.isModalOpen = false;
     },
-    showModalDelete(id) {
+    showModalDelete(item) {
       this.currentItem = {
-        userId: id,
-        modalTitle: 'Confirm Delete'
+        type: 'delete',
+        userId: item.id,
+        modalProps: {
+          title: 'Confirm Delete',
+          text: `Are you sure you want to delete this user: ${item.name}?`,
+          confirmButton: {
+            color: 'error',
+            label: 'Delete'
+          },
+          cancelButton: {
+            label: 'Cancel'
+          }
+        }
       };
       this.openModal();
     },
-    async handleDeleteUser() {
-      await this.deleteUser(this.currentItem.userId);
-      this.closeModal();
-    },
     handleCancel() {
       this.currentItem = null;
+      this.closeModal();
+    },
+    async handleConfirm() {
+      switch (this.currentItem.type) {
+        case 'delete':
+          await this.deleteUser(this.currentItem.userId);
+          break;
+        default:
+          break;
+      }
       this.closeModal();
     }
   }
