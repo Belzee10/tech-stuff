@@ -1,0 +1,297 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserForm.vue should render correctly 1`] = `
+<form
+  class="v-form"
+  novalidate="novalidate"
+>
+  <div
+    class="container"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="col col-12"
+      >
+        <div
+          class="v-input name theme--light v-text-field"
+        >
+          <div
+            class="v-input__control"
+          >
+            <div
+              class="v-input__slot"
+            >
+              <div
+                class="v-text-field__slot"
+              >
+                <label
+                  class="v-label theme--light"
+                  for="input-4"
+                  style="left: 0px; position: absolute;"
+                >
+                  Name
+                </label>
+                <input
+                  id="input-4"
+                  type="text"
+                />
+              </div>
+            </div>
+            <div
+              class="v-text-field__details"
+            >
+              <div
+                class="v-messages theme--light"
+              >
+                <span
+                  class="v-messages__wrapper"
+                  name="message-transition"
+                  tag="div"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="col col-12"
+      >
+        <div
+          class="v-input last-name theme--light v-text-field"
+        >
+          <div
+            class="v-input__control"
+          >
+            <div
+              class="v-input__slot"
+            >
+              <div
+                class="v-text-field__slot"
+              >
+                <label
+                  class="v-label theme--light"
+                  for="input-7"
+                  style="left: 0px; position: absolute;"
+                >
+                  Last Name
+                </label>
+                <input
+                  id="input-7"
+                  type="text"
+                />
+              </div>
+            </div>
+            <div
+              class="v-text-field__details"
+            >
+              <div
+                class="v-messages theme--light"
+              >
+                <span
+                  class="v-messages__wrapper"
+                  name="message-transition"
+                  tag="div"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="col col-12"
+      >
+        <div
+          class="v-input email theme--light v-text-field"
+        >
+          <div
+            class="v-input__control"
+          >
+            <div
+              class="v-input__slot"
+            >
+              <div
+                class="v-text-field__slot"
+              >
+                <label
+                  class="v-label theme--light"
+                  for="input-10"
+                  style="left: 0px; position: absolute;"
+                >
+                  Email
+                </label>
+                <input
+                  id="input-10"
+                  type="email"
+                />
+              </div>
+            </div>
+            <div
+              class="v-text-field__details"
+            >
+              <div
+                class="v-messages theme--light"
+              >
+                <span
+                  class="v-messages__wrapper"
+                  name="message-transition"
+                  tag="div"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="col col-12"
+      >
+        <div
+          class="v-input password theme--light v-text-field"
+        >
+          <div
+            class="v-input__control"
+          >
+            <div
+              class="v-input__slot"
+            >
+              <div
+                class="v-text-field__slot"
+              >
+                <label
+                  class="v-label theme--light"
+                  for="input-13"
+                  style="left: 0px; position: absolute;"
+                >
+                  Password
+                </label>
+                <input
+                  id="input-13"
+                  type="password"
+                />
+              </div>
+            </div>
+            <div
+              class="v-text-field__details"
+            >
+              <div
+                class="v-messages theme--light"
+              >
+                <span
+                  class="v-messages__wrapper"
+                  name="message-transition"
+                  tag="div"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="col col-12"
+      >
+        <div
+          class="v-input role theme--light v-text-field v-select"
+        >
+          <div
+            class="v-input__control"
+          >
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-owns="list-16"
+              class="v-input__slot"
+              role="button"
+            >
+              <div
+                class="v-select__slot"
+              >
+                <label
+                  class="v-label theme--light"
+                  for="input-16"
+                  style="left: 0px; position: absolute;"
+                >
+                  Role
+                </label>
+                <div
+                  class="v-select__selections"
+                >
+                  <input
+                    aria-readonly="true"
+                    id="input-16"
+                    readonly="readonly"
+                    type="text"
+                  />
+                </div>
+                <div
+                  class="v-input__append-inner"
+                >
+                  <div
+                    class="v-input__icon v-input__icon--append"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="v-icon notranslate mdi mdi-menu-down theme--light"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="v-menu"
+              >
+                <div
+                  class="v-menu__content theme--light "
+                  style="max-height: 304px; min-width: 0px; max-width: auto; top: 12px; left: 0px; transform-origin: top left; z-index: 0; display: none;"
+                />
+              </div>
+            </div>
+            <div
+              class="v-text-field__details"
+            >
+              <div
+                class="v-messages theme--light"
+              >
+                <span
+                  class="v-messages__wrapper"
+                  name="message-transition"
+                  tag="div"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div
+        class="d-flex justify-end col col-12"
+      >
+        <button
+          class="submit text-capitalize primary v-btn v-btn--contained theme--light v-size--small"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            Submit
+          </span>
+        </button>
+         
+        <button
+          class="cancel text-capitalize ml-2 v-btn v-btn--contained theme--light v-size--small"
+          type="button"
+        >
+          <span
+            class="v-btn__content"
+          >
+            Cancel
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
+`;

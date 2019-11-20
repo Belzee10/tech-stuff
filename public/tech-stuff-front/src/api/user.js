@@ -88,3 +88,19 @@ export const createUser = async data => {
     throw error.message;
   }
 };
+
+/**
+ *
+ * @param {Number} id
+ * @param {Object} data
+ */
+export const editUser = async (id, data) => {
+  try {
+    const res = await httpClient.put(`/users/${id}`, data);
+    const result = filterObject(res.data, 'user');
+    return result;
+  } catch (error) {
+    logger.error(`USERS_EDIT: **${error}**`);
+    throw error.message;
+  }
+};

@@ -3,6 +3,7 @@ import {
   SET_USERS,
   DELETE_USER,
   ADD_USER,
+  EDIT_USER,
   SET_USERS_ERROR,
   SET_REGISTER_ERROR,
   SET_LOGIN_ERROR,
@@ -46,6 +47,11 @@ const mutations = {
 
   [ADD_USER]: (state, payload) => {
     state.users = [payload.user, ...state.users];
+  },
+
+  [EDIT_USER]: (state, payload) => {
+    const index = state.users.findIndex(item => item.id === payload.user.id);
+    state.users.splice(index, 1, payload.user);
   }
 };
 

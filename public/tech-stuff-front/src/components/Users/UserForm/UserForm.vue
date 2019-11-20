@@ -24,7 +24,7 @@
             type="email"
           ></v-text-field>
         </v-col>
-        <v-col cols="12">
+        <v-col v-if="showPassword" cols="12">
           <v-text-field
             v-model="value.password"
             class="password"
@@ -68,6 +68,10 @@ export default {
     populateWith: {
       type: Object,
       default: () => null
+    },
+    showPassword: {
+      type: Boolean,
+      default: true
     }
   },
   data: () => ({
@@ -80,9 +84,16 @@ export default {
       role: ''
     }
   }),
+  created() {
+    if (this.populateWith) this.value = this.populateWith;
+  },
   methods: {
     submit() {
-      if (this.$refs.form.validate()) this.$emit('submit', this.value);
+      if (this.$refs.form.validate()) {
+        const formValue = { ...this.value };
+        if (!this.showPassword) delete formValue.password;
+        this.$emit('submit', formValue);
+      }
     },
     cancel() {
       this.$emit('cancel');

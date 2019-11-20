@@ -3,6 +3,7 @@ import {
   SET_USERS,
   DELETE_USER,
   ADD_USER,
+  EDIT_USER,
   SET_USERS_ERROR,
   SET_REGISTER_ERROR,
   SET_LOGIN_ERROR,
@@ -14,7 +15,8 @@ import {
   logout,
   getUsers,
   deleteUser,
-  createUser
+  createUser,
+  editUser
 } from '@/api/user.js';
 
 const actions = {
@@ -97,6 +99,21 @@ const actions = {
       const user = await createUser(data);
       commit({
         type: ADD_USER,
+        user
+      });
+    } catch (error) {
+      commit({
+        type: SET_USERS_ERROR,
+        error
+      });
+    }
+  },
+
+  async editUser({ commit }, { id, data }) {
+    try {
+      const user = await editUser(id, data);
+      commit({
+        type: EDIT_USER,
         user
       });
     } catch (error) {

@@ -88,5 +88,29 @@ describe('UserList.vue', () => {
     expect(store.dispatch).toHaveBeenCalledWith('createUser', formValue);
   });
 
+  test('should emit a "editUser" action with the correct payload', () => {
+    const items = generateArray(1, {
+      name: 'name',
+      email: 'email@email.com'
+    });
+    const store = createStore({
+      getters: {
+        users: () => items
+      }
+    });
+    const wrapper = createWrapper(UserList, {
+      store
+    });
+    store.dispatch = jest.fn();
+    wrapper.find('.edit-user').trigger('click');
+    const modal = wrapper.find(Modal);
+    expect(modal.exists()).toBeTruthy();
+    modal.find('.submit').trigger('click');
+    expect(store.dispatch).toHaveBeenCalledWith('editUser', {
+      id: items[0].id,
+      data: items[0]
+    });
+  });
+
   test.todo('should render correctly');
 });

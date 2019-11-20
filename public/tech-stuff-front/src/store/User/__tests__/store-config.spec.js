@@ -143,4 +143,19 @@ describe('User store', () => {
     await flushPromises();
     expect(store.state.users).toEqual(newUsers);
   });
+
+  test('should dispatch a "editUser" action and update the store', async () => {
+    expect.assertions(2);
+    const item = {
+      id: 1,
+      name: 'name'
+    };
+    mockAxios.put.mockResolvedValueOnce({ data: item });
+    const newStore = { ...storeConfig };
+    const store = new Vuex.Store(newStore);
+    store.dispatch('editUser', { id: item.id, data: item });
+    expect(mockAxios.put).toHaveBeenCalledWith(`${url}/${item.id}`, item);
+    await flushPromises();
+    expect(store.state.users).toContainEqual(item);
+  });
 });

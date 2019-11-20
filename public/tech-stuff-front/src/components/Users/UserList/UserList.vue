@@ -18,6 +18,13 @@
             @submit="handleCreate"
             @cancel="closeModal"
           />
+          <user-form
+            v-if="modalProps.type === 'edit'"
+            :populate-with="modalProps.user"
+            :show-password="false"
+            @submit="handleEdit"
+            @cancel="closeModal"
+          />
         </template>
       </modal>
 
@@ -79,6 +86,7 @@
                       color="warning"
                       title="Edit"
                       class="edit-user"
+                      @click="() => showModalEdit(item)"
                     >
                       <v-icon small>mdi-pencil</v-icon>
                     </v-btn>
@@ -131,13 +139,13 @@ export default {
     this.fetchUsers();
   },
   methods: {
-    ...mapActions(['fetchUsers', 'deleteUser', 'createUser']),
+    ...mapActions(['fetchUsers', 'deleteUser', 'createUser', 'editUser']),
     roleStyles(role) {
       switch (role) {
         case 'member':
           return 'primary';
         case 'admin':
-          return 'dark';
+          return 'info';
         case 'superAdmin':
           return 'black';
         default:
@@ -167,12 +175,25 @@ export default {
       };
       this.openModal();
     },
+    showModalEdit(item) {
+      const name = item.name.split(' ', 2);
+      this.modalProps = {
+        type: 'edit',
+        title: `Edit User: ${item.name}`,
+        user: { ...item, name: name[0], lastName: name[1] }
+      };
+      this.openModal();
+    },
     async handleDelete() {
       await this.deleteUser(this.modalProps.user.id);
       this.closeModal();
     },
     async handleCreate(value) {
       await this.createUser(value);
+      this.closeModal();
+    },
+    async handleEdit(value) {
+      await this.editUser({ id: this.modalProps.user.id, data: value });
       this.closeModal();
     }
   }
