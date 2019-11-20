@@ -4,18 +4,28 @@
       <modal
         v-if="isModalOpen"
         :is-open="isModalOpen"
-        :title="currentItem.modalProps.title"
-        :confirm-button="currentItem.modalProps.confirmButton"
-        :cancel-button="currentItem.modalProps.cancelButton"
-        attach
-        @confirm="handleConfirm"
-        @cancel="handleCancel"
+        :title="modalProps.title"
       >
         <template slot="default">
-          {{ currentItem.modalProps.text }}
+          <confirmation-delete
+            v-if="modalProps.type === 'delete'"
+            :message="modalProps.message"
+            @confirm-delete="handleDelete"
+            @confirm-cancel="closeModal"
+          />
+          <user-form
+            v-if="modalProps.type === 'create'"
+            @submit="handleCreate"
+            @cancel="closeModal"
+          />
         </template>
       </modal>
-      <v-btn color="secondary" class="text-capitalize mb-2" small
+
+      <v-btn
+        color="secondary"
+        class="text-capitalize mb-2 new-user"
+        small
+        @click="showModalCreate"
         >New User</v-btn
       >
       <v-row v-if="errorUsers">
@@ -96,13 +106,15 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import Modal from '@/components/Shared/Modal';
+import UserForm from '@/components/Users/UserForm';
+import ConfirmationDelete from '@/components/Shared/ConfirmationDelete';
 
 export default {
   name: 'UserList',
-  components: { Modal },
+  components: { Modal, UserForm, ConfirmationDelete },
   data: () => ({
     isModalOpen: false,
-    currentItem: null
+    modalProps: null
   }),
   computed: {
     ...mapGetters(['users', 'errorUsers']),
@@ -119,7 +131,7 @@ export default {
     this.fetchUsers();
   },
   methods: {
-    ...mapActions(['fetchUsers', 'deleteUser']),
+    ...mapActions(['fetchUsers', 'deleteUser', 'createUser']),
     roleStyles(role) {
       switch (role) {
         case 'member':
@@ -137,37 +149,30 @@ export default {
     },
     closeModal() {
       this.isModalOpen = false;
+      this.modalProps = null;
     },
     showModalDelete(item) {
-      this.currentItem = {
+      this.modalProps = {
         type: 'delete',
-        userId: item.id,
-        modalProps: {
-          title: 'Confirm Delete',
-          text: `Are you sure you want to delete this user: ${item.name}?`,
-          confirmButton: {
-            color: 'error',
-            label: 'Delete'
-          },
-          cancelButton: {
-            label: 'Cancel'
-          }
-        }
+        user: item,
+        title: 'Confirm Delete',
+        message: `Are you sure you want to delete this user: ${item.name}?`
       };
       this.openModal();
     },
-    handleCancel() {
-      this.currentItem = null;
+    showModalCreate() {
+      this.modalProps = {
+        type: 'create',
+        title: 'Create User'
+      };
+      this.openModal();
+    },
+    async handleDelete() {
+      await this.deleteUser(this.modalProps.user.id);
       this.closeModal();
     },
-    async handleConfirm() {
-      switch (this.currentItem.type) {
-        case 'delete':
-          await this.deleteUser(this.currentItem.userId);
-          break;
-        default:
-          break;
-      }
+    async handleCreate(value) {
+      await this.createUser(value);
       this.closeModal();
     }
   }

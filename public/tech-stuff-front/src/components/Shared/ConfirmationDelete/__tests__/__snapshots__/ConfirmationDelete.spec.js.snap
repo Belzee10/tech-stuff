@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmationDelete.vue should  1`] = `
+<div>
+  <p>
+    
+  </p>
+   
+  <div
+    class="d-flex justify-end"
+  >
+    <button
+      class="text-capitalize mr-1 confirm-delete v-btn v-btn--contained theme--light v-size--small error"
+      type="button"
+    >
+      <span
+        class="v-btn__content"
+      >
+        
+      Delete
+    
+      </span>
+    </button>
+     
+    <button
+      class="text-capitalize confirm-cancel v-btn v-btn--contained theme--light v-size--small"
+      type="button"
+    >
+      <span
+        class="v-btn__content"
+      >
+        Cancel
+      </span>
+    </button>
+  </div>
+</div>
+`;

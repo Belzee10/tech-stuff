@@ -40,11 +40,15 @@
             label="Role"
           ></v-select>
         </v-col>
-        <v-col cols="12">
-          <v-btn :disabled="!valid" small class="submit primary" @click="submit"
+        <v-col cols="12" class="d-flex justify-end">
+          <v-btn
+            :disabled="!valid"
+            small
+            class="submit text-capitalize primary"
+            @click="submit"
             >Submit</v-btn
           >
-          <v-btn small class="cancel secondary ml-2" @click="cancel"
+          <v-btn small class="cancel text-capitalize ml-2" @click="cancel"
             >Cancel</v-btn
           >
         </v-col>

@@ -45,7 +45,7 @@ describe('UserList.vue', () => {
     expect(alert.exists()).toBeTruthy();
   });
 
-  test('should emit a "deleteUser" action and update the store', () => {
+  test('should emit a "deleteUser" with the correct payload', () => {
     const items = generateArray(1);
     const store = createStore({
       getters: {
@@ -59,8 +59,33 @@ describe('UserList.vue', () => {
     wrapper.find('.delete-user').trigger('click');
     const modal = wrapper.find(Modal);
     expect(modal.exists()).toBeTruthy();
-    modal.find('.confirm').trigger('click');
+    modal.find('.confirm-delete').trigger('click');
     expect(store.dispatch).toHaveBeenCalledWith('deleteUser', items[0].id);
+  });
+
+  test('should emit a "createUser" action with the correct payload', () => {
+    const formValue = {
+      name: 'name',
+      lastName: 'lastName',
+      email: 'email@email.com',
+      password: '123',
+      role: 'admin'
+    };
+    const store = createStore();
+    const wrapper = createWrapper(UserList, {
+      store
+    });
+    store.dispatch = jest.fn();
+    wrapper.find('.new-user').trigger('click');
+    const modal = wrapper.find(Modal);
+    expect(modal.exists()).toBeTruthy();
+    wrapper.find('.name input').setValue(formValue.name);
+    wrapper.find('.last-name input').setValue(formValue.lastName);
+    wrapper.find('.email input').setValue(formValue.email);
+    wrapper.find('.password input').setValue(formValue.password);
+    wrapper.find('.role input').setValue(formValue.role);
+    modal.find('.submit').trigger('click');
+    expect(store.dispatch).toHaveBeenCalledWith('createUser', formValue);
   });
 
   test.todo('should render correctly');
