@@ -44,7 +44,7 @@
           <v-btn
             :disabled="!valid"
             small
-            class="submit text-capitalize primary"
+            class="submit text-capitalize secondary"
             @click="submit"
             >Submit</v-btn
           >

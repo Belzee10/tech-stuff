@@ -270,7 +270,7 @@ exports[`UserForm.vue should render correctly 1`] = `
         class="d-flex justify-end col col-12"
       >
         <button
-          class="submit text-capitalize primary v-btn v-btn--contained theme--light v-size--small"
+          class="submit text-capitalize secondary v-btn v-btn--contained theme--light v-size--small"
           type="button"
         >
           <span
