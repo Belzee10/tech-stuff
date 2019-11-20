@@ -105,6 +105,7 @@
               </tbody>
             </template>
           </v-simple-table>
+          <pagination class="mt-4" :length="4" :value="1" />
         </v-col>
       </v-row>
     </v-col>
@@ -116,10 +117,11 @@ import { mapGetters, mapActions } from 'vuex';
 import Modal from '@/components/Shared/Modal';
 import UserForm from '@/components/Users/UserForm';
 import ConfirmationDelete from '@/components/Shared/ConfirmationDelete';
+import Pagination from '@/components/Shared/Pagination';
 
 export default {
   name: 'UserList',
-  components: { Modal, UserForm, ConfirmationDelete },
+  components: { Modal, UserForm, ConfirmationDelete, Pagination },
   data: () => ({
     isModalOpen: false,
     modalProps: null

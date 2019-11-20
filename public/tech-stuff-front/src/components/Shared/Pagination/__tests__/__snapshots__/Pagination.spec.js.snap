@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination.vue should  1`] = `
+<ul
+  class="v-pagination theme--light"
+>
+  <li>
+    <button
+      class="v-pagination__navigation v-pagination__navigation--disabled"
+      type="button"
+    >
+      <i
+        aria-hidden="true"
+        class="v-icon notranslate mdi mdi-chevron-left theme--light"
+      />
+    </button>
+  </li>
+  <li>
+    <button
+      class="v-pagination__navigation v-pagination__navigation--disabled"
+      type="button"
+    >
+      <i
+        aria-hidden="true"
+        class="v-icon notranslate mdi mdi-chevron-right theme--light"
+      />
+    </button>
+  </li>
+</ul>
+`;
