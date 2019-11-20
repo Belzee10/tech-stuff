@@ -11,7 +11,8 @@ const state = {
   errorRegister: '',
   errorLogin: '',
   pagination: {
-    currentPage: 1
+    currentPage: 1,
+    lastPage: 1
   }
 };
 

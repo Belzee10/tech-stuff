@@ -112,7 +112,27 @@ describe('UserList.vue', () => {
     });
   });
 
-  test('should dispatch a "fetchUsers" action with the correct params', () => {});
+  test('should dispatch a "fetchUsers" action with the correct params', () => {
+    const pagination = {
+      currentPage: 1,
+      lastPage: 2
+    };
+    const store = createStore({
+      getters: {
+        pagination: () => pagination
+      }
+    });
+    const wrapper = createWrapper(UserList, {
+      store
+    });
+    store.dispatch = jest.fn();
+    const paginationItem = wrapper.findAll('.v-pagination__item');
+    expect(paginationItem).toHaveLength(pagination.lastPage);
+    wrapper.find('.v-pagination li:last-child button').trigger('click');
+    expect(store.dispatch).toHaveBeenCalledWith('fetchUsers', {
+      page: pagination.currentPage + 1
+    });
+  });
 
   test.todo('should render correctly');
 });

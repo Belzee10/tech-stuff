@@ -105,7 +105,14 @@
               </tbody>
             </template>
           </v-simple-table>
-          <pagination class="mt-4" :length="4" :value="1" />
+          <pagination
+            class="mt-4"
+            :length="pagination.lastPage"
+            :value="pagination.currentPage"
+            @next="handleNextPage"
+            @previous="handlePreviousPage"
+            @input="handleGoToPage"
+          />
         </v-col>
       </v-row>
     </v-col>
@@ -197,6 +204,15 @@ export default {
     async handleEdit(value) {
       await this.editUser({ id: this.modalProps.user.id, data: value });
       this.closeModal();
+    },
+    async handleNextPage() {
+      await this.fetchUsers({ page: this.pagination.currentPage + 1 });
+    },
+    async handlePreviousPage() {
+      await this.fetchUsers({ page: this.pagination.currentPage - 1 });
+    },
+    async handleGoToPage(value) {
+      await this.fetchUsers({ page: value });
     }
   }
 };

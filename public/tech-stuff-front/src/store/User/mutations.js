@@ -35,7 +35,10 @@ const mutations = {
 
   [SET_USERS]: (state, payload) => {
     state.users = payload.users;
-    state.pagination = { currentPage: payload.meta.current_page };
+    state.pagination = {
+      currentPage: payload.meta.current_page,
+      lastPage: payload.meta.last_page
+    };
   },
 
   [SET_USERS_ERROR]: (state, payload) => {

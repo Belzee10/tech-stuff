@@ -96,7 +96,10 @@ describe('User store', () => {
     const items = generateArray(2);
     const params = { page: 2 };
     mockAxios.get.mockResolvedValueOnce({
-      data: { data: items, meta: { current_page: params.page } }
+      data: {
+        data: items,
+        meta: { current_page: params.page, last_page: params.page }
+      }
     });
     const newStore = { ...storeConfig };
     const store = new Vuex.Store(newStore);
@@ -104,7 +107,10 @@ describe('User store', () => {
     expect(mockAxios.get).toHaveBeenCalledWith(url, { params });
     await flushPromises();
     expect(store.state.users).toEqual(items);
-    expect(store.state.pagination).toEqual({ currentPage: params.page });
+    expect(store.state.pagination).toEqual({
+      currentPage: params.page,
+      lastPage: params.page
+    });
   });
 
   test('should dispatch a failed "fetchUsers" action and update the store', async () => {
