@@ -9,7 +9,10 @@ const state = {
   users: [],
   errorUsers: '',
   errorRegister: '',
-  errorLogin: ''
+  errorLogin: '',
+  pagination: {
+    currentPage: 1
+  }
 };
 
 export default {

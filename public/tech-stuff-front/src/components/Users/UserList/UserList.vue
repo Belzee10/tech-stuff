@@ -127,7 +127,7 @@ export default {
     modalProps: null
   }),
   computed: {
-    ...mapGetters(['users', 'errorUsers']),
+    ...mapGetters(['users', 'errorUsers', 'pagination']),
     getUsers() {
       return this.users
         ? this.users.map(item => ({

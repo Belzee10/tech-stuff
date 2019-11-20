@@ -63,12 +63,13 @@ const actions = {
     }
   },
 
-  async fetchUsers({ commit }, params) {
+  async fetchUsers({ commit }, params = { page: 1 }) {
     try {
-      const users = await getUsers(params);
+      const [users, meta] = await getUsers(params);
       commit({
         type: SET_USERS,
-        users
+        users,
+        meta
       });
       return users;
     } catch (error) {

@@ -49,7 +49,10 @@ const createWrapper = (Component, overrides, mountType = 'mount') => {
 const createStore = overrides => {
   const defaultStoreConfig = {
     getters: {
-      view: () => 'cards'
+      view: () => 'cards',
+      pagination: () => ({
+        currentPage: 1
+      })
     }
   };
   return new Vuex.Store(mergeWith(defaultStoreConfig, overrides, customizer));

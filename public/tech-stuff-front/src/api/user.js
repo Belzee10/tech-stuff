@@ -53,7 +53,8 @@ export const getUsers = async params => {
   try {
     const res = await httpClient.get('/users', { params });
     const result = res.data.data.map(item => filterObject(item, 'user'));
-    return result;
+    const meta = res.data.meta;
+    return [result, meta];
   } catch (error) {
     logger.error(`USERS_ALL: **${error}**`);
     throw error.message;

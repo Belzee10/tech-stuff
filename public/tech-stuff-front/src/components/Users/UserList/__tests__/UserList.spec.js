@@ -45,7 +45,7 @@ describe('UserList.vue', () => {
     expect(alert.exists()).toBeTruthy();
   });
 
-  test('should emit a "deleteUser" with the correct payload', () => {
+  test('should dispatch a "deleteUser" with the correct payload', () => {
     const items = generateArray(1);
     const store = createStore({
       getters: {
@@ -63,7 +63,7 @@ describe('UserList.vue', () => {
     expect(store.dispatch).toHaveBeenCalledWith('deleteUser', items[0].id);
   });
 
-  test('should emit a "createUser" action with the correct payload', () => {
+  test('should dispatch a "createUser" action with the correct payload', () => {
     const formValue = {
       name: 'name',
       lastName: 'lastName',
@@ -88,7 +88,7 @@ describe('UserList.vue', () => {
     expect(store.dispatch).toHaveBeenCalledWith('createUser', formValue);
   });
 
-  test('should emit a "editUser" action with the correct payload', () => {
+  test('should dispatch a "editUser" action with the correct payload', () => {
     const items = generateArray(1, {
       name: 'name',
       email: 'email@email.com'
@@ -111,6 +111,8 @@ describe('UserList.vue', () => {
       data: items[0]
     });
   });
+
+  test('should dispatch a "fetchUsers" action with the correct params', () => {});
 
   test.todo('should render correctly');
 });
